@@ -1,16 +1,38 @@
-create database service_adept;
+
+
+-- create database service_adept;
 use service_adept;
+
+-- drop all tables if exists
+-- drop table user;
+-- drop table service;
+-- drop table PriceType;
+-- drop table provider;
+-- drop table organization;
+-- drop table OrganizationManager;
+-- drop table OrganizationAdmin;
+-- drop table ServiceProvider;
+-- drop table ServiceOrder;
+-- drop table AccessLevel;
+-- drop table CustomerCareExecutive;
+-- drop table Complaint;
+-- drop table Payments;
+
+
+
+
 
 CREATE TABLE `User` (
   `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `username` varchar(64) NOT NULL,
+  `username` varchar(64) UNIQUE NOT NULL,
+  `name` varchar(64) NOT NULL,
   `password` varchar(256) NOT NULL,
   `email` varchar(320) UNIQUE NOT NULL,
   `phone` varchar(13) UNIQUE,
-  `address` varchar(200) UNIQUE,
+  `address` varchar(200),
   `city` varchar(256) NOT NULL,
   `access_level` INT NOT NULL,
-  `GENDER` INT NOT NULL
+  `gender` INT NOT NULL
 );
 
 CREATE TABLE `Service` (
@@ -64,7 +86,7 @@ CREATE TABLE `ServiceOrder` (
 
 CREATE TABLE `AccessLevel` (
   `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `description` varchar(16) NOT NULL
+  `description` varchar(32) NOT NULL
 );
 
 CREATE TABLE `CustomerCareExecutive` (
@@ -122,3 +144,14 @@ ALTER TABLE `Complaint` ADD FOREIGN KEY (`executive_id`) REFERENCES `CustomerCar
 ALTER TABLE `Payments` ADD FOREIGN KEY (`user_id`) REFERENCES `User` (`id`);
 
 ALTER TABLE `Payments` ADD FOREIGN KEY (`service_order_id`) REFERENCES `ServiceOrder` (`id`);
+
+
+
+-- insert into AccessLevel
+INSERT INTO `AccessLevel` (`description`) VALUES
+('User'),
+('Service Provider'),
+('Organization Manager'),
+('Organization Admin'),
+('Customer Care Executive'),
+('Admin');
