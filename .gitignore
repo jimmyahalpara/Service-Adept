@@ -1,1 +1,3 @@
 database/configuration.php
+**/unit_test/
+config.php
