@@ -42,6 +42,8 @@
         }
 
 
+
+
         // function for creating new OrganizationAdmin
         public function create(){
             // check if user_id is exist in UserModel
@@ -50,6 +52,7 @@
             if (!$userModel -> isIdPresent()){
                 return false;
             }
+
 
             // read one record from UserModel
             $userModel -> readOne();
@@ -156,6 +159,31 @@
             }
         }
 
+        // function to readOne with particular user_id
+        public function readOne(){
+            // query to read single record
+            $query = "SELECT * FROM " . $this->table_name . " WHERE user_id = :user_id";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+
+            // sanitize
+            $this->user_id=htmlspecialchars(strip_tags($this->user_id));
+
+            // bind values
+            $stmt->bindParam(":user_id", $this->user_id);
+
+            // execute query
+            $stmt->execute();
+
+            // get retrieved row
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // set values to object properties
+            $this->id = $row['id'];
+            $this->user_id = $row['user_id'];
+            $this->organization_id = $row['organization_id'];
+        }
 
     }
 
