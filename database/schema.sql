@@ -51,21 +51,25 @@ CREATE TABLE `PriceType` (
 
 CREATE TABLE `provider` (
   `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
   `organization_id` INT NOT NULL 
 );
 
 CREATE TABLE `Organization` (
   `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `name` varchar(128) NOT NULL 
+  
 );
 
 CREATE TABLE `OrganizationManager` (
   `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
   `organization_id` INT NOT NULL 
 );
 
 CREATE TABLE `OrganizationAdmin` (
   `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `user_id` INT  NOT NULL ,
   `organization_id` INT NOT NULL 
 );
 
@@ -115,15 +119,15 @@ ALTER TABLE `User` ADD FOREIGN KEY (`access_level`) REFERENCES `AccessLevel` (`i
 
 ALTER TABLE `Service` ADD FOREIGN KEY (`price_type_id`) REFERENCES `PriceType` (`id`);
 
-ALTER TABLE `provider` ADD FOREIGN KEY (`id`) REFERENCES `User` (`id`);
+ALTER TABLE `provider` ADD FOREIGN KEY (`user_id`) REFERENCES `User` (`id`);
 
 ALTER TABLE `provider` ADD FOREIGN KEY (`organization_id`) REFERENCES `Organization` (`id`);
 
-ALTER TABLE `OrganizationManager` ADD FOREIGN KEY (`id`) REFERENCES `User` (`id`);
+ALTER TABLE `OrganizationManager` ADD FOREIGN KEY (`user_id`) REFERENCES `User` (`id`);
 
 ALTER TABLE `OrganizationManager` ADD FOREIGN KEY (`organization_id`) REFERENCES `Organization` (`id`);
 
-ALTER TABLE `OrganizationAdmin` ADD FOREIGN KEY (`id`) REFERENCES `User` (`id`);
+ALTER TABLE `OrganizationAdmin` ADD FOREIGN KEY (`user_id`) REFERENCES `User` (`id`);
 
 ALTER TABLE `OrganizationAdmin` ADD FOREIGN KEY (`organization_id`) REFERENCES `Organization` (`id`);
 
