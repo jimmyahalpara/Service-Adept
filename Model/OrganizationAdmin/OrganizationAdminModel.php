@@ -74,12 +74,88 @@
 
             // execute query
             if ($stmt->execute()){
+                // store new id 
+                $this->id = $this->conn->lastInsertId();
                 return true;
             }
 
             return false;
             
         }
+
+        // function for deleting OrganizationAdmin
+        public function delete(){
+            // query to delete record
+            $query = "DELETE FROM " . $this->table_name . " WHERE id = :id";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+
+            // sanitize
+            $this->id=htmlspecialchars(strip_tags($this->id));
+
+            // bind values
+            $stmt->bindParam(":id", $this->id);
+
+            // execute query
+            if($stmt->execute()){
+                // check if user_id is exist in UserModel
+                $userModel = new UserModel($this->conn);
+                $userModel -> id = $this -> user_id;
+                if ($userModel -> isIdPresent()){
+                    // read one record from UserModel
+                    $userModel -> readOne();
+                    // Decrease access level of user to OrganizationAdmin
+                    $userModel -> access_level = 1;
+                    $userModel -> update();
+                }
+                return true;
+            }
+
+            return false;
+        }
+
+        // function to get OrganizationAdmin UserModel
+        public function getUserModel(){
+            // check if user_id is exist in UserModel
+            $userModel = new UserModel($this->conn);
+            $userModel -> id = $this -> user_id;
+            if (!$userModel -> isIdPresent()){
+                return false;
+            }
+
+            // read one record from UserModel
+            $userModel -> readOne();
+            return $userModel;
+        }
+
+        // function to check if User_id is present in OrganizationAdmin
+        public function isIdPresent(){
+            // query to read single record
+            $query = "SELECT id FROM " . $this->table_name . " WHERE user_id = :user_id";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+
+            // sanitize
+            $this->user_id=htmlspecialchars(strip_tags($this->user_id));
+
+            // bind values
+            $stmt->bindParam(":user_id", $this->user_id);
+
+            // execute query
+            $stmt->execute();
+
+            // get retrieved row
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($row){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
 
     }
 
