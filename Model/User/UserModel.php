@@ -1,9 +1,6 @@
 <?php
     // prevent users from directly loading this page
-    if(!defined('LOADER'))
-        // redirect to index.html 
-        header("Location: /");
-        return;
+    include __DIR__ . '/../../Utilities/preventDirectAccess.php';
 
 
     // include $salt and $hash from config.php from base directory
@@ -151,6 +148,15 @@
             } else {
                 throw new Exception("No Entry Found with id = ".$this -> id." in table ".$this -> table_name);
             }
+        }
+
+        // delete user 
+        public function delete(){
+            // query to delete user
+            $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+            $stmt = $this -> conn -> prepare($query);
+            $stmt -> bindParam(1, $this -> id);
+            $stmt -> execute();
         }
 
         public function isIdPresent(){
