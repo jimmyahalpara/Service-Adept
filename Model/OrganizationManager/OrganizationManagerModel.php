@@ -167,8 +167,22 @@
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             // set values to object properties
+            $this -> id = $row['id'];
             $this->user_id = $row['user_id'];
             $this->organization_id = $row['organization_id'];
+        }
+
+        // function to get UserModel 
+        public function getUserModel(){
+            $userModel = new UserModel($this->conn);
+            $userModel -> id = $this -> user_id;
+            if (!$userModel -> isIdPresent()){
+                return false;
+            }
+
+            // read one record from UserModel
+            $userModel -> readOne();
+            return $userModel;
         }
 
 
