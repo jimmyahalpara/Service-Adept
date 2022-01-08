@@ -121,7 +121,7 @@
             $stmt -> bindParam(':id', $this -> id);
 
             $result = $stmt -> execute();
-            print_r($result);
+            // print_r($result);
 
         }
 
