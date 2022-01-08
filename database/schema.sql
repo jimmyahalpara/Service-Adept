@@ -95,7 +95,7 @@ CREATE TABLE `AccessLevel` (
 
 CREATE TABLE `CustomerCareExecutive` (
   `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `user_id` INT NOT NULL,
+  `user_id` INT NOT NULL UNIQUE,
   `care_count` INT
 );
 
