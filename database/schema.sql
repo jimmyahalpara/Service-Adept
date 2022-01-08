@@ -69,7 +69,7 @@ CREATE TABLE `OrganizationManager` (
 
 CREATE TABLE `OrganizationAdmin` (
   `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `user_id` INT  NOT NULL ,
+  `user_id` INT  NOT NULL UNIQUE,
   `organization_id` INT NOT NULL 
 );
 
@@ -159,3 +159,5 @@ INSERT INTO `AccessLevel` (`description`) VALUES
 ('Organization Admin'),
 ('Customer Care Executive'),
 ('Admin');
+
+
