@@ -130,6 +130,37 @@
             $this->name = $row['name'];
         }
 
+
+        // function to check if ID is present in Organization   
+        public function isIdPresent(){
+            // query to read single record
+            $query = "SELECT * FROM " . $this->table_name . " WHERE id = ?";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+
+            // sanitize
+            $this->id=htmlspecialchars(strip_tags($this->id));
+
+            // bind id of record to read
+            $stmt->bindParam(1, $this->id);
+
+            // execute query
+            $stmt->execute();
+
+            // get retrieved row
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // set values to object properties
+            $this->name = $row['name'];
+
+            // check if id is present
+            if($this->name){
+                return true;
+            }
+
+            return false;
+        }
     }
 
 ?>
