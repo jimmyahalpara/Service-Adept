@@ -185,6 +185,19 @@
             return $userModel;
         }
 
+        // function to get OrganizationModel from ORganizationManagerModel
+        public function getOrganizationModel(){
+            $organizationModel = new OrganizationModel($this->conn);
+            $organizationModel -> id = $this -> organization_id;
+            if (!$organizationModel -> isIdPresent()){
+                return false;
+            }
+
+            // read one record from OrganizationModel
+            $organizationModel -> readOne();
+            return $organizationModel;
+        }
+
 
     }
 
