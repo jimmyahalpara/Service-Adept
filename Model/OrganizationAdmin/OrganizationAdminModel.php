@@ -7,6 +7,8 @@
     // include UserModel.php
     include __DIR__ . '/../User/UserModel.php';
 
+    // include OrganizationModel.php
+    include __DIR__ . '/../Organization/OrganizationModel.php';
 
     class OrganizationAdminModel{
         // database connection and table
@@ -130,6 +132,20 @@
             // read one record from UserModel
             $userModel -> readOne();
             return $userModel;
+        }
+
+        // function to get OrganizationModel for OrganizationAdmin
+        public function getOrganizationModel(){
+            // check if organization_id is exist in OrganizationModel
+            $organizationModel = new OrganizationModel($this->conn);
+            $organizationModel -> id = $this -> organization_id;
+            if (!$organizationModel -> isIdPresent()){
+                return false;
+            }
+
+            // read one record from OrganizationModel
+            $organizationModel -> readOne();
+            return $organizationModel;
         }
 
         // function to check if User_id is present in OrganizationAdmin
