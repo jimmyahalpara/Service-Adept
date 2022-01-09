@@ -49,17 +49,6 @@
                 return false;
             }
 
-            
-            // check if user_id is present in CustomerCareExecutive
-            $query = "SELECT * FROM " . $this->table_name . " WHERE user_id = :user_id";
-            $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(":user_id", $this->user_id);
-            $stmt->execute();
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            if (count($result) > 0){
-                // var_dump("HERE");
-                return false;
-            }
 
             // insert query
             $query = "INSERT INTO " . $this->table_name . " (user_id, care_count) VALUES (:user_id, :care_count)";
@@ -78,6 +67,7 @@
             // execute query
             if ($stmt->execute()){
                 // reduce access level of user to CustomerCareExecutive
+                $userModel -> readOne();
                 $userModel -> access_level = 2;
                 $userModel -> update();
                 
@@ -86,6 +76,117 @@
 
             return false;
         }
+
+
+        // function to increase care_count of CustomerCareExecutive
+        public function increaseCareCount(){
+            // update query
+            $query = "UPDATE " . $this->table_name . " SET care_count = care_count + 1 WHERE user_id = :user_id";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+
+            // sanitize
+            $this->user_id=htmlspecialchars(strip_tags($this->user_id));
+
+            // bind values
+            $stmt->bindParam(":user_id", $this->user_id);
+
+            // execute query
+            if ($stmt->execute()){
+                return true;
+            }
+
+            return false;
+        }
+
+
+        // function to decrease care_count of CustomerCareExecutive
+        public function decreaseCareCount(){
+            // update query
+            $query = "UPDATE " . $this->table_name . " SET care_count = care_count - 1 WHERE user_id = :user_id";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+
+            // sanitize
+            $this->user_id=htmlspecialchars(strip_tags($this->user_id));
+
+            // bind values
+            $stmt->bindParam(":user_id", $this->user_id);
+
+            // execute query
+            if ($stmt->execute()){
+                return true;
+            }
+
+            return false;
+        }
+
+
+        // function to delete CustomerCareExecutive
+        public function delete(){
+            // delete query
+            $query = "DELETE FROM " . $this->table_name . " WHERE user_id = :user_id";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+
+            // sanitize
+            $this->user_id=htmlspecialchars(strip_tags($this->user_id));
+
+            // bind values
+            $stmt->bindParam(":user_id", $this->user_id);
+
+            // execute query
+            if ($stmt->execute()){
+                // reduce access level of user to User
+                $userModel = new UserModel($this->conn);
+                $userModel -> id = $this -> user_id;
+                $userModel -> readOne();
+                $userModel -> access_level = 1;
+                $userModel -> update();
+                return true;
+            }
+
+            return false;
+        }
+
+
+        // function to readOne() CustomerCareExecutive
+        public function readOne(){
+            // select query
+            $query = "SELECT * FROM " . $this->table_name . " WHERE user_id = :user_id";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+
+            // sanitize
+            $this->user_id=htmlspecialchars(strip_tags($this->user_id));
+
+            // bind values
+            $stmt->bindParam(":user_id", $this->user_id);
+
+            // execute query
+            $stmt->execute();
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // set values to object properties
+            $this->id = $result['id'];
+            $this->user_id = $result['user_id'];
+            $this->care_count = $result['care_count'];
+        }
+
+        // get UserModel data for given CustomerCareExecutive user_id
+        public function getUserModel(){
+            $userModel = new UserModel($this->conn);
+            $userModel -> id = $this -> user_id;
+            $userModel -> readOne();
+            return $userModel;
+        }
+
+
     }
 
 ?>
