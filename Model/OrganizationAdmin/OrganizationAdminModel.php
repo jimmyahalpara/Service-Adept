@@ -48,19 +48,6 @@
 
         // function for creating new OrganizationAdmin
         public function create(){
-            // check if user_id is exist in UserModel
-            $userModel = new UserModel($this->conn);
-            $userModel -> id = $this -> user_id;
-            if (!$userModel -> isIdPresent()){
-                return false;
-            }
-
-
-            // read one record from UserModel
-            $userModel -> readOne();
-            // Increase access level of user to OrganizationAdmin
-            $userModel -> access_level = 4;
-            $userModel -> update();
 
             // query to insert record
             $query = "INSERT INTO
@@ -81,6 +68,13 @@
             if ($stmt->execute()){
                 // store new id 
                 $this->id = $this->conn->lastInsertId();
+
+                // update acess level for user
+                $userModel = new UserModel($this->conn);
+                $userModel -> id = $this->user_id;
+                $userModel -> readOne();
+                $userModel -> access_level = 4;
+                $userModel -> update();
                 return true;
             }
 
