@@ -43,31 +43,7 @@
 
         // function for creating new OrganizationManager
         public function create(){
-            // check if user_id is exist in UserModel
-            $userModel = new UserModel($this->conn);
-            $userModel -> id = $this -> user_id;
-            if (!$userModel -> isIdPresent()){
-                // var_dump("HERE");
-                return false;
-            }
-
             
-
-            // check if user_id is present in OrganizationAdmin
-            $organizationAdminModel = new OrganizationAdminModel($this->conn);
-            $organizationAdminModel -> user_id = $this -> user_id;
-            $organizationAdminModel -> organization_id = $this -> organization_id;
-            if ($organizationAdminModel -> isIdPresent()){
-                return false;
-            }
-
-
-            // read one record from UserModel
-            $userModel -> readOne();
-            // Increase access level of user to OrganizationManager
-            $userModel -> access_level = 3;
-            $userModel -> update();
-
             // query to insert record
             $query = "INSERT INTO " . $this->table_name . ' (user_id, organization_id) values (:user_id,:organization_id)';
 
@@ -84,6 +60,12 @@
             
             // execute query
             if ($stmt->execute()){
+                // increase acess of user
+                $userModel = new UserModel($this->conn);
+                $userModel -> id = $this->user_id;
+                $userModel -> readOne();
+                $userModel -> acess_level = 3;
+                $userModel -> update();
                 return true;
             }
 
