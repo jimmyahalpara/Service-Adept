@@ -103,6 +103,8 @@ CREATE TABLE `Complaint` (
   `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `executive_id` INT NOT NULL
+  `status` INT NOT NULL DEFAULT 1;
+  `description` TEXT(500) NOT NULL
 );
 
 
