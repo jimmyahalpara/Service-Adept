@@ -41,13 +41,7 @@
 
         // function for creating new CustomerCareExecutive
         public function create(){
-            // check if user_id is exist in UserModel
-            $userModel = new UserModel($this->conn);
-            $userModel -> id = $this -> user_id;
-            if (!$userModel -> isIdPresent()){
-                // var_dump("HERE");
-                return false;
-            }
+            
 
 
             // insert query
@@ -67,6 +61,8 @@
             // execute query
             if ($stmt->execute()){
                 // reduce access level of user to CustomerCareExecutive
+                $userModel = new UserModel($this->conn);
+                $userModel -> id = $this->user_id;
                 $userModel -> readOne();
                 $userModel -> access_level = 2;
                 $userModel -> update();
@@ -156,7 +152,7 @@
         // function to readOne() CustomerCareExecutive
         public function readOne(){
             // select query
-            $query = "SELECT * FROM " . $this->table_name . " WHERE user_id = :user_id";
+            $query = "SELECT * FROM " . $this->table_name . " WHERE id = :id";
 
             // prepare query statement
             $stmt = $this->conn->prepare($query);
@@ -165,7 +161,7 @@
             $this->user_id=htmlspecialchars(strip_tags($this->user_id));
 
             // bind values
-            $stmt->bindParam(":user_id", $this->user_id);
+            $stmt->bindParam(":id", $this->id);
 
             // execute query
             $stmt->execute();
@@ -184,6 +180,58 @@
             $userModel -> id = $this -> user_id;
             $userModel -> readOne();
             return $userModel;
+        }
+
+        // to check if specified user_id is present 
+        public function isUserIdPresent(){
+            // select query
+            $query = "SELECT * FROM " . $this->table_name . " WHERE user_id = :user_id";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+
+            // sanitize
+            $this->user_id=htmlspecialchars(strip_tags($this->user_id));
+
+            // bind values
+            $stmt->bindParam(":user_id", $this->user_id);
+
+            // execute query
+            $stmt->execute();
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($result){
+                return true;
+            }
+
+            return false;
+        }
+
+        // to check if specified id is present 
+        public function isIdPresent(){
+            // select query
+            $query = "SELECT * FROM " . $this->table_name . " WHERE id = :id";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+
+            // sanitize
+            $this->id=htmlspecialchars(strip_tags($this->id));
+
+            // bind values
+            $stmt->bindParam(":id", $this->id);
+
+            // execute query
+            $stmt->execute();
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($result){
+                return true;
+            }
+
+            return false;
         }
 
 
