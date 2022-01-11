@@ -163,3 +163,13 @@ INSERT INTO `AccessLevel` (`description`) VALUES
 ('Admin');
 
 
+-- insert into PriceType
+INSERT INTO `PriceType` (`type`) VALUES
+('Once'),
+('Hourly'),
+('Daily'),
+('Weekly'),
+('Monthly');
+
+
+
