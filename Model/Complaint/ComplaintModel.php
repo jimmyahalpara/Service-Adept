@@ -242,7 +242,7 @@
 
 
         // check if executive_id is present
-        public function isExecutiveId(){
+        public function isExecutiveIdPresent(){
             // query to read single record
             $query = "SELECT * FROM " . $this->table_name . " WHERE executive_id = ?";
 
@@ -270,7 +270,7 @@
 
 
         // check if id is present
-        public function checkId(){
+        public function isIdPresent(){
             // query to read single record
             $query = "SELECT * FROM " . $this->table_name . " WHERE id = ?";
 
