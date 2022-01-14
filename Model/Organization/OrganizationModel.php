@@ -2,9 +2,6 @@
     // redirect users to index page if they try to access this page directly
     include __DIR__ . '/../../Utilities/preventDirectAccess.php';
 
-    // include $salt and $hash from config.php from base directory
-    include __DIR__.'/../../config.php';
-
     class OrganizationModel {
         // database connection
         private $conn;
