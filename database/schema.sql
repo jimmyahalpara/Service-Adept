@@ -41,7 +41,9 @@ CREATE TABLE `Service` (
   `description` TEXT(500) NOT NULL,
   `price_type_id` INT NOT NULL,
   `price` FLOAT NOT NULL,
-  `city` varchar(256) NOT NULL
+  `city` varchar(256) NOT NULL,
+  `organization_id` INT NOT NULL,
+  `category_id` INT NOT NULL
 );
 
 CREATE TABLE `PriceType` (
@@ -102,8 +104,8 @@ CREATE TABLE `CustomerCareExecutive` (
 CREATE TABLE `Complaint` (
   `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
-  `executive_id` INT NOT NULL
-  `status` INT NOT NULL DEFAULT 1;
+  `executive_id` INT NOT NULL,
+  `status` INT NOT NULL DEFAULT 1,
   `description` TEXT(500) NOT NULL
 );
 
@@ -117,9 +119,18 @@ CREATE TABLE `Payments` (
   `is_paid` INT NOT NULL
 );
 
+CREATE TABLE `Category` (
+  `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL
+);
+
 ALTER TABLE `User` ADD FOREIGN KEY (`access_level`) REFERENCES `AccessLevel` (`id`);
 
 ALTER TABLE `Service` ADD FOREIGN KEY (`price_type_id`) REFERENCES `PriceType` (`id`);
+
+ALTER TABLE `Service` ADD FOREIGN KEY (`organization_id`) REFERENCES `Organization` (`id`);
+
+ALTER TABLE `Service` ADD FOREIGN KEY (`category_id`) REFERENCES `Category` (`id`);
 
 ALTER TABLE `provider` ADD FOREIGN KEY (`user_id`) REFERENCES `User` (`id`);
 
@@ -171,5 +182,17 @@ INSERT INTO `PriceType` (`type`) VALUES
 ('Weekly'),
 ('Monthly');
 
+
+-- insert into Category 
+INSERT INTO `Category` (`name`) VALUES
+('Cleaning'),
+('Handyman'),
+('Plumbing'),
+('Electrical'),
+('Other');
+
+
+
+-- inserting testing values
 
 
