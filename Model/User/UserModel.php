@@ -217,6 +217,36 @@
             }
         }
 
+        // readOne using email
+        public function readOneUsingEmail(){
+            // query to read one user
+            $query = "SELECT * FROM " . $this->table_name . " WHERE email = ?";
+            $stmt = $this -> conn -> prepare($query);
+            $stmt -> bindParam(1, $this -> email);
+
+
+            // execute query
+            $stmt -> execute();
+            $row = $stmt -> fetch(PDO::FETCH_ASSOC);
+
+            // set properties
+            if ($row){
+                $this -> id = $row['id'];
+                $this -> username = $row['username'];
+                $this -> name = $row['name'];
+                $this -> password = $row['password'];
+                $this -> email = $row['email'];
+                $this -> phone = $row['phone'];
+                $this -> address = $row['address'];
+                $this -> city = $row['city'];
+                $this -> access_level = $row['access_level'];
+                $this -> gender = $row['gender'];
+                return true;
+            } else {
+                return false;
+            }
+        }
+
 
         
         // static function hashPassword with $hash and $salt
