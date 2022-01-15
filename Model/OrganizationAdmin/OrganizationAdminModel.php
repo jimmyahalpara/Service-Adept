@@ -5,10 +5,10 @@
     
 
     // include UserModel.php
-    include __DIR__ . '/../User/UserModel.php';
+    // include __DIR__ . '/../User/UserModel.php';
 
     // include OrganizationModel.php
-    include __DIR__ . '/../Organization/OrganizationModel.php';
+    // include __DIR__ . '/../Organization/OrganizationModel.php';
 
     class OrganizationAdminModel{
         // database connection and table

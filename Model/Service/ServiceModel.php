@@ -3,10 +3,10 @@
     include __DIR__ . '/../../Utilities/preventDirectAccess.php';
 
     // include OrganizationModel.php 
-    include __DIR__ . '/../Organization/OrganizationModel.php';
+    // include __DIR__ . '/../Organization/OrganizationModel.php';
 
     // include PriceTypeModel.php
-    include __DIR__ . '/../PriceType/PriceTypeModel.php';
+    // include __DIR__ . '/../PriceType/PriceTypeModel.php';
 
     class ServiceModel {
         // database connection
