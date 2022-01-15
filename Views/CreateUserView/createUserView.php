@@ -1,6 +1,19 @@
-    <link rel="stylesheet" href="createUserView.css">
+<?php 
+        require_once __DIR__. "/../../Utilities/preventDirectAccess.php";
+        require_once __DIR__. "/createUserViewCss.php";
+        
+?>
+    
     <h1>Create New User</h1>
-    <form class="DetailForm">
+    <p style="color: red;">
+        <?php 
+            if(isset($_SESSION["createUserError"])){
+                echo $_SESSION["createUserError"];
+                unset($_SESSION["createUserError"]);
+            }
+        ?>
+    </p>
+    <form class="DetailForm" method="POST" action="">
         <table>
             <tr>
                 <td>
@@ -56,7 +69,7 @@
             </tr>
             <tr>
                 <td>
-                    <button type="submit">Submit</button>
+                    <button type="submit" name= "submit" value="submit">Submit</button>
                 </td>
             </tr>
             
