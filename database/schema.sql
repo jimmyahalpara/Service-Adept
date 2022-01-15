@@ -28,7 +28,7 @@ CREATE TABLE `User` (
   `name` varchar(64) NOT NULL,
   `password` varchar(256) NOT NULL,
   `email` varchar(320) UNIQUE NOT NULL,
-  `phone` varchar(13) UNIQUE,
+  `phone` varchar(13),
   `address` varchar(200),
   `city` varchar(256) NOT NULL,
   `access_level` INT NOT NULL,
