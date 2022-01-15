@@ -4,7 +4,7 @@
     // define LOADER in true
     define("LOADER", true);
     // requre all models
-    require_once __DIR__ . "/Utilities/importAllModals.php";
+    require_once __DIR__ . "/Utilities/importAllModels.php";
     // require database connection
     require_once __DIR__ . "/database/configuration.php";
     
