@@ -7,7 +7,7 @@
                     <label for="input_name">Full Name: </label>
                 </td>
                 <td>
-                    <input type="text" name="name" id="input_name" placeholder="Firstname Lastname" required>
+                    <input type="text" name="name" id="input_name" placeholder="Firstname Lastname" maxlength="64" required>
                 </td>
             </tr>
             <tr>
@@ -15,7 +15,7 @@
                     <label for="input_username">Username: </label>
                 </td>
                 <td>
-                    <input type="text" name="username" id="input_username" placeholder="Enter Username" title="Should not have any space or special characters" pattern="\w*" required>
+                    <input type="text" name="username" id="input_username" placeholder="Enter Username" title="Should not have any space or special characters" pattern="\w*" maxlength="64" required>
                 </td>
             </tr>
             <tr>
@@ -23,7 +23,7 @@
                     <label for="input_email">Email ID: </label>
                 </td>
                 <td>
-                    <input type="email" name="email" id="input_email" placeholder = "example@domain.com" required>
+                    <input type="email" name="email" id="input_email" placeholder = "example@domain.com" maxlength="64" required>
                 </td>
             </tr>
             <tr>
@@ -44,7 +44,7 @@
             </tr>
             <tr>
                 <td><label for="input_city">City: </label></td>
-                <td><input type="text" name="city" id="input_city" required></td>
+                <td><input type="text" name="city" id="input_city" maxlength="256" required></td>
             </tr>
             <tr>
                 <td><label for="input_gender">Gender: </label></td>
