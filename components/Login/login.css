@@ -1,0 +1,145 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    user-select: none;
+}  
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Lexend Deca', sans-serif;
+    background-image: url(../login/images/blur.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.mainContainer{
+  width: 1050px;
+  height: 550px;  
+  display: flex;
+  justify-content: flex-start;
+  align-items: left;
+  flex-direction: column;
+  position: absolute; 
+  background-color: #faf3f39c;
+  backdrop-filter: blur(50px);
+  border-radius: 25px;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+}
+
+.text{
+    margin: 45px 0 0 40px;
+}
+.bigText{
+    font-size: 40px;
+    line-height: 50px;
+}
+.smallText{
+    padding-top: 10px;
+    padding-left: 3px;
+}
+
+.inputs{
+    padding: 10px 0 10px 0;
+}
+.password{
+    margin-top: 10px;
+}
+
+input.email,.password{
+    border: 3px solid white;
+    border-radius: 10px;
+    background: transparent;
+    width: 300px;
+    height: 35px;
+    padding-left: 10px;
+    font-weight: bold;
+    color: #613B58;
+    margin: 20px 0 0 40px
+}
+
+input::placeholder{
+    font-weight: bold;
+    color: #613B58;
+}
+input:focus{
+    outline-style: none;
+}
+
+button.login{
+    background-color: #f74c55;
+    border-style: none;
+    border-radius: 7px;
+    color: white;
+    padding: 10px 135px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 20px 0 0 40px;
+    cursor: pointer;
+}
+
+hr{
+    background-color: white;
+    color: white;
+    height: 3px;
+    border-style: none;
+    border-radius: 16px;
+    width: 90px;
+    margin: 20px 0 0 40px;
+    padding: 0 110px;
+}
+
+.socialIcons{
+    
+    margin-top: 20px;
+    margin-left: 35px;
+
+}
+button.socialLogos{
+    background-color: white;
+    border-style: none;
+    border-radius: 7px;
+    height: 40px;
+    width: 60px;
+    margin-left: 7px;
+    cursor: pointer;
+
+}
+.bottomText{
+    margin: 7px 0 0 40px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.signup{
+    color: #7B37A6;
+    font-size: 11px;
+    margin-left: 180px;
+    margin-top: -14px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: bold;
+}
+
+.square {
+    position: absolute;
+    height: 550px;  
+    width: 500px;
+    background: transparent;
+    margin: 100px 0 100px 500px;
+    border-radius: 25px;
+    z-index: 1;
+}
+
+.mobileImg{
+    position: relative;
+    height: 550px;
+    width: 700px;
+    margin-left: -70px;
+  }
+ 
+
+ 
+
