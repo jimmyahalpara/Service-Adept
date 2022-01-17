@@ -9,11 +9,11 @@
     require_once __DIR__ . "/database/configuration.php";
     
     function setUserCreationError($message){
-        var_dump("TOOO");
+        // var_dump("TOOO");
         $_SESSION['createUserError'] = $message;
         header("Location: ".$_SERVER['PHP_SELF']);
     }
-
+    // var_dump($_POST);
     if (isset($_POST['submit'])){
         if (isset($_POST['name']) && isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password_1']) && isset($_POST['password_2']) && isset($_POST['phone']) && isset($_POST['address']) && isset($_POST['city']) && isset($_POST['gender'])){
 
@@ -68,7 +68,7 @@
             $user -> city = $city;
             $user -> access_level = 1;
             $user -> create();
-            header("Location: ../../Views/LoginView/loginView.php");
+            header("Location: ". dirname($_SERVER['PHP_SELF']). "/login.php");
             return;
 
 
@@ -89,7 +89,8 @@
 </head>
 <body>    
     <?php
-        require_once __DIR__ . "/Views/CreateUserView/createUserView.php";
+        // require_once __DIR__ . "/Views/CreateUserView/createUserView.php";
+        require_once __DIR__ . "/Views/Signup/signup.php";
     ?>
 </body>
 </html>
