@@ -42,7 +42,7 @@
                 <button class="socialLogos"><i class="fa fa-facebook-f"></i></button>
                 <button class="socialLogos"><i class="fa fa-google"></i></button>
             </div>
-            <p class="bottomText">Don't have an account? <button id="loginSignUpButton">SignUp</button></p>
+            <p class="bottomText">Don't have an account? <button id="loginSignUpButton" onclick="window.location='createUser.php'; return false;">SignUp</button></p>
             
 
 
