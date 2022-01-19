@@ -1,14 +1,18 @@
-<?php
-include "../Header/header.php"
-?>
 
+<style>
+    <?php 
+        require_once __DIR__ . '/navbar.css';
+    ?>
+</style>
 
-<nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand">Navbar</a>
-        <div class="d-flex navbar">
-            <a href="../Login/login.php" class=" btn btn-outline-success">Login</a>
-            <a href="../Signup/signup.php" class="btn btn-outline-success ">Signup</a>
-        </div>
-    </div>
+<nav>
+    <h1 id="navbar_heading">Service Adept</h1>
+    <?php
+        if (isset($_SESSION['user_id'])) {
+            echo "<span id='welcome_text'>Welcome ". $_SESSION['name']."</span>";
+            echo '<a class="buttonLink" href="logout.php">Logout</a>';
+        } else {
+            echo '<a class="buttonLink" href="login.php">Login</a>';
+        }
+    ?>
 </nav>
