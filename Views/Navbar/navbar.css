@@ -1,0 +1,52 @@
+html, body {
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+    /* outline: 1px solid grey; */
+}
+
+
+nav {
+    background-color: #f74c55;
+    color: white;
+    padding: 1vh;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 1vh;
+    grid-template-rows: 1fr;
+}
+
+nav span, nav a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#navbar_heading {
+    grid-column: 1 / span 2;
+}
+
+#welcome_text {
+    grid-column: 8 / span 2;
+}
+
+.buttonLink {
+    grid-column: 10 / span 1;
+}
+
+.buttonLink {
+    text-decoration: none;
+    background-color: #f74c55;
+    color: white;
+    font-weight: bold;
+    border: 3px solid white;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.buttonLink:hover {
+    color: #f74c55;
+    background-color: white;   
+}
