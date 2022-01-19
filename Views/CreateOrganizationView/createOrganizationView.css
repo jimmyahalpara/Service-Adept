@@ -1,23 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+* {
+    /* outline: 1px solid rgba(0, 0, 0, 0.514); */
+}
 
+.formContainer{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5vh 2vw;
+}
 
-form, h1, input,textarea, select {
-    font-family: 'Roboto', sans-serif;
+.formContainer .DetailForm {
+    backdrop-filter: blur(5px);
+    border-radius: 25px;
+    /* width: 1050px; */
+    background-color: #faf3f39c;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: left;
+    padding: 2vh 2vw 2vh 2vw;
+}
+
+* {
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+h1 {
+    margin: 1vh 0vw; 
 }
 
 input, label,textarea, select {
-    font-size: 1.25em;
-    margin: 5px 10px;
+    border: none;
+    margin: 1vh 0vw; 
+    border-radius: 10px;
+    width: 80%;
+    color: #613B58;
+    font-weight: bold;
 }
 
-input,textarea {
-    width: 500px;
+::placeholder {
+    color: #613b58;
+    font-weight: bold;
 }
+
+input:hover {
+    outline: 3px solid black;
+}
+
 
 button{
     font-size: 1.25em;
-    margin: 5px 10px;
+    margin: 1vh 1vw; 
     width: 150px;
 }
 
@@ -27,5 +64,28 @@ input:focus:required:invalid {
     border-color: transparent;
 }
 
+#createOrganizationHeading {
+    margin: 10vh 0vw 0 0; 
+}
+
+p {
+    margin: 0vh 0vw 2vh 0vw; 
+    font-size: 0.8em;
+}
+
+button#submitButton {
+    background-color: #f74c55;
+    border-style: none;
+    border-radius: 7px;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100px;
+}
 
 
