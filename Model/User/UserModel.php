@@ -79,7 +79,7 @@
             $stmt -> bindParam(':address', $this -> address);
             $stmt -> bindParam(':city', $this -> city);
             $stmt -> bindParam(':access_level', $this -> access_level);
-            $stmt -> bindParam(':gender', $this -> access_level);
+            $stmt -> bindParam(':gender', $this -> gender);
 
             $stmt -> execute();
             $this -> id = $this ->conn -> lastInsertId();
