@@ -8,9 +8,20 @@
 
 nav {
     background-color: #f74c55;
-    
+    font-family: 'Lexend Deca', sans-serif; 
 }
 
+
+.loginsignup {
+    border: 2px solid white;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.loginsignup:hover {
+    background-color: white;
+    color: #f74c55 !important;
+}
 
 
 
