@@ -25,6 +25,10 @@
 
             // execute query
             $stmt -> execute();
+
+            $result = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+
+            return $result;
         }
 
         
