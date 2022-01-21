@@ -30,7 +30,7 @@ CREATE TABLE `User` (
   `email` varchar(320) UNIQUE NOT NULL,
   `phone` varchar(13),
   `address` varchar(200),
-  `city` varchar(256) NOT NULL,
+  `city_id` INT NOT NULL,
   `access_level` INT NOT NULL,
   `gender` INT NOT NULL
 );
@@ -41,7 +41,7 @@ CREATE TABLE `Service` (
   `description` TEXT(500) NOT NULL,
   `price_type_id` INT NOT NULL,
   `price` FLOAT NOT NULL,
-  `city` varchar(256) NOT NULL,
+  `city_id` INT NOT NULL,
   `organization_id` INT NOT NULL,
   `category_id` INT NOT NULL
 );
@@ -124,6 +124,13 @@ CREATE TABLE `Category` (
   `name` varchar(32) NOT NULL
 );
 
+CREATE TABLE `City` (
+  `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL
+);
+
+ALTER TABLE `User` ADD FOREIGN KEY (`city_id`) REFERENCES `City`(`id`);
+
 ALTER TABLE `User` ADD FOREIGN KEY (`access_level`) REFERENCES `AccessLevel` (`id`);
 
 ALTER TABLE `Service` ADD FOREIGN KEY (`price_type_id`) REFERENCES `PriceType` (`id`);
@@ -131,6 +138,8 @@ ALTER TABLE `Service` ADD FOREIGN KEY (`price_type_id`) REFERENCES `PriceType` (
 ALTER TABLE `Service` ADD FOREIGN KEY (`organization_id`) REFERENCES `Organization` (`id`);
 
 ALTER TABLE `Service` ADD FOREIGN KEY (`category_id`) REFERENCES `Category` (`id`);
+
+ALTER TABLE `Service` ADD FOREIGN KEY (`city_id`) REFERENCES `City` (`id`);
 
 ALTER TABLE `provider` ADD FOREIGN KEY (`user_id`) REFERENCES `User` (`id`);
 
@@ -191,7 +200,13 @@ INSERT INTO `Category` (`name`) VALUES
 ('Electrical'),
 ('Other');
 
-
+-- insert into City
+INSERT INTO `City` (`name`) VALUES 
+('Mumbai'),
+('Pune'),
+('Delhi'),
+('Bangalore'),
+('Chennai');
 
 -- inserting testing values
 
