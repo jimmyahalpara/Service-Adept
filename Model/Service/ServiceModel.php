@@ -20,7 +20,7 @@
         public $description;
         public $price_type_id;
         public $price;
-        public $city;
+        public $city_id;
         public $organization_id;
         public $category_id;
 
@@ -51,7 +51,7 @@
         public function create(){
             // query to insert record
             $query = "INSERT INTO
-                        " . $this->table_name . ' (service_name, description, price_type_id, price, city, organization_id, category_id) values (:service_name, :description, :price_type_id, :price, :city, :organization_id, :category_id)';
+                        " . $this->table_name . ' (service_name, description, price_type_id, price, city_id, organization_id, category_id) values (:service_name, :description, :price_type_id, :price, :city, :organization_id, :category_id)';
 
             // prepare query statement
             $stmt = $this->conn->prepare($query);
@@ -61,7 +61,7 @@
             $this->description=htmlspecialchars(strip_tags($this->description));
             $this->price_type_id=htmlspecialchars(strip_tags($this->price_type_id));
             $this->price=htmlspecialchars(strip_tags($this->price));
-            $this->city=htmlspecialchars(strip_tags($this->city));
+            $this->city_id=htmlspecialchars(strip_tags($this->city_id));
             $this->organization_id=htmlspecialchars(strip_tags($this->organization_id));
             $this->category_id=htmlspecialchars(strip_tags($this->category_id));
 
@@ -70,7 +70,7 @@
             $stmt->bindParam(":description", $this->description);
             $stmt->bindParam(":price_type_id", $this->price_type_id);
             $stmt->bindParam(":price", $this->price);
-            $stmt->bindParam(":city", $this->city);
+            $stmt->bindParam(":city", $this->city_id);
             $stmt->bindParam(":organization_id", $this->organization_id);
             $stmt->bindParam(":category_id", $this->category_id);
 
@@ -89,7 +89,7 @@
         public function update(){
             // query to update record
             $query = "UPDATE " . $this->table_name . "
-                        SET service_name = :service_name, description = :description, price_type_id = :price_type_id, price = :price, city = :city, organization_id = :organization_id, category_id = :category_id
+                        SET service_name = :service_name, description = :description, price_type_id = :price_type_id, price = :price, city_id = :city, organization_id = :organization_id, category_id = :category_id
                         WHERE id = :id";
 
             // prepare query statement
@@ -100,7 +100,7 @@
             $this->description=htmlspecialchars(strip_tags($this->description));
             $this->price_type_id=htmlspecialchars(strip_tags($this->price_type_id));
             $this->price=htmlspecialchars(strip_tags($this->price));
-            $this->city=htmlspecialchars(strip_tags($this->city));
+            $this->city_id=htmlspecialchars(strip_tags($this->city_id));
             $this->organization_id=htmlspecialchars(strip_tags($this->organization_id));
             $this->category_id=htmlspecialchars(strip_tags($this->category_id));
             $this->id=htmlspecialchars(strip_tags($this->id));
@@ -110,7 +110,7 @@
             $stmt->bindParam(":description", $this->description);
             $stmt->bindParam(":price_type_id", $this->price_type_id);
             $stmt->bindParam(":price", $this->price);
-            $stmt->bindParam(":city", $this->city);
+            $stmt->bindParam(":city", $this->city_id);
             $stmt->bindParam(":organization_id", $this->organization_id);
             $stmt->bindParam(":category_id", $this->category_id);
             $stmt->bindParam(":id", $this->id);
@@ -167,7 +167,7 @@
             $this->description = $row['description'];
             $this->price_type_id = $row['price_type_id'];
             $this->price = $row['price'];
-            $this->city = $row['city'];
+            $this->city_id = $row['city_id'];
             $this->organization_id = $row['organization_id'];
             $this->category_id = $row['category_id'];
         }

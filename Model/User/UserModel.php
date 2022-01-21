@@ -22,7 +22,7 @@
         public $email;
         public $phone;
         public $address;
-        public $city;
+        public $city_id;
         public $access_level;
         public $gender;
 
@@ -53,7 +53,7 @@
         public function create(){
             // query to insert record
             $query = "INSERT INTO
-                        " . $this->table_name . ' (username, name, password, email, phone, address, city, access_level, gender) values (:username,:name,:password,:email,:phone,:address,:city,:access_level,:gender)';
+                        " . $this->table_name . ' (username, name, password, email, phone, address, city_id, access_level, gender) values (:username,:name,:password,:email,:phone,:address,:city,:access_level,:gender)';
             
 
             // sanitize username
@@ -63,7 +63,7 @@
             $this -> email = htmlspecialchars(strip_tags($this -> email));
             $this -> phone = htmlspecialchars(strip_tags($this -> phone));
             $this -> address = htmlspecialchars(strip_tags($this -> address));
-            $this -> city = htmlspecialchars(strip_tags($this -> city));
+            $this -> city_id = htmlspecialchars(strip_tags($this -> city_id));
             $this -> access_level = htmlspecialchars(strip_tags($this -> access_level));
             $this -> gender = htmlspecialchars(strip_tags($this -> gender));
 
@@ -77,7 +77,7 @@
             $stmt -> bindParam(':email', $this -> email);
             $stmt -> bindParam(':phone', $this -> phone);
             $stmt -> bindParam(':address', $this -> address);
-            $stmt -> bindParam(':city', $this -> city);
+            $stmt -> bindParam(':city', $this -> city_id);
             $stmt -> bindParam(':access_level', $this -> access_level);
             $stmt -> bindParam(':gender', $this -> gender);
 
@@ -90,7 +90,7 @@
         // function to update user
         public function update(){
             // query to update records
-            $query = "UPDATE " . $this->table_name . " SET username=:username, name=:name, password=:password, email=:email, phone=:phone, address=:address, city=:city, access_level=:access_level, gender=:gender where id=:id";
+            $query = "UPDATE " . $this->table_name . " SET username=:username, name=:name, password=:password, email=:email, phone=:phone, address=:address, city_id=:city, access_level=:access_level, gender=:gender where id=:id";
             
             // prepare statement
 
@@ -103,7 +103,7 @@
             $stmt -> email = htmlspecialchars(strip_tags($this -> email));
             $stmt -> phone = htmlspecialchars(strip_tags($this -> phone));
             $stmt -> address = htmlspecialchars(strip_tags($this -> address));
-            $stmt -> city = htmlspecialchars(strip_tags($this -> city));
+            $stmt -> city_id = htmlspecialchars(strip_tags($this -> city_id));
             $stmt -> access_level = htmlspecialchars(strip_tags($this -> access_level));
             $stmt -> gender = htmlspecialchars(strip_tags($this -> gender));
 
@@ -115,7 +115,7 @@
             $stmt -> bindParam(':email', $this -> email);
             $stmt -> bindParam(':phone', $this -> phone);
             $stmt -> bindParam(':address', $this -> address);
-            $stmt -> bindParam(':city', $this -> city);
+            $stmt -> bindParam(':city', $this -> city_id);
             $stmt -> bindParam(':access_level', $this -> access_level);
             $stmt -> bindParam(':gender', $this -> gender);
             $stmt -> bindParam(':id', $this -> id);
@@ -142,7 +142,7 @@
                 $this -> email = $row['email'];
                 $this -> phone = $row['phone'];
                 $this -> address = $row['address'];
-                $this -> city = $row['city'];
+                $this -> city_id = $row['city_id'];
                 $this -> access_level = $row['access_level'];
                 $this -> gender = $row['gender'];
             } else {
@@ -238,7 +238,7 @@
                 $this -> email = $row['email'];
                 $this -> phone = $row['phone'];
                 $this -> address = $row['address'];
-                $this -> city = $row['city'];
+                $this -> city_id = $row['city_id'];
                 $this -> access_level = $row['access_level'];
                 $this -> gender = $row['gender'];
                 return true;

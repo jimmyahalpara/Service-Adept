@@ -19,7 +19,7 @@
                 }
             ?>
         </p>
-        <form method="POST">
+        <form method="POST" autocomplete="off">
             <div class="inputs">
                 <input type="text" name="name" id="input_name" placeholder="Enter Full Name" maxlength="64" required><br>
                 <input type="text" name="username" id="input_username" placeholder="Enter Username" title="Should not have any space or special characters" pattern="\w*" maxlength="64" required><br>
@@ -28,7 +28,16 @@
                 <input type="password" name="password_2" id="input_password_2" onkeyup="password_2_keyup()" placeholder="Retype password" required><br>
                 <input type="tel" name="phone" id="input_phone" pattern="\d{10}" title="Enter 10 digits of phone number" placeholder="Enter phone number" required><br>
                 <textarea name="address" id="input_address" cols="30" rows="10" maxlength="195" title="Address Required" placeholder="Enter your address" required></textarea><br>
-                <input type="text" name="city" id="input_city" maxlength="256" placeholder="Enter city" required><br>
+                <!-- <input type="text" name="city" id="input_city" maxlength="256" placeholder="Enter city" required><br> -->
+                <select name="city" id="input_city">
+                    <?php
+                        $city = new CityModel($pdo);
+                        $result = $city -> read();
+                        foreach ($result as $row){
+                            echo "<option value='".$row['id']."'>".$row['name']."</option>";
+                        }
+                    ?>
+                </select><br>
                 <select name="gender" id="input_gender">
                     <option value="0">Female</option>
                     <option value="1">Male</option>

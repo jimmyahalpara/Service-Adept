@@ -65,7 +65,7 @@
             $user -> password = UserModel::hashPassword($password_1);
             $user -> phone = $phone;
             $user -> address = $address;
-            $user -> city = $city;
+            $user -> city_id = $city;
             $user -> access_level = 1;
             $user -> create();
             header("Location: ". dirname($_SERVER['PHP_SELF']). "/login.php");
