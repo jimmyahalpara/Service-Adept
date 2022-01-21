@@ -25,7 +25,7 @@
             </p>
         </div>
 
-        <form method="POST">
+        <form method="POST" autocomplete="on">
             <div class="inputs">
                 <input name="email" id="email" class="email" type="email" placeholder="E-mail" required>
                 <br>
