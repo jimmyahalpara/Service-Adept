@@ -5,14 +5,12 @@
     ?>
 </style>
 
-<nav>
-    <h1 id="navbar_heading">Service Adept</h1>
-    <?php
-        if (isset($_SESSION['user_id'])) {
-            echo "<span id='welcome_text'>Welcome ". $_SESSION['name']."</span>";
-            echo '<a class="buttonLink" href="logout.php">Logout</a>';
-        } else {
-            echo '<a class="buttonLink" href="login.php">Login</a>';
-        }
-    ?>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">Service-Adept</a>
+    <ul class="navbar-nav">
+        <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">User</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Abouts</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Services</a></li>
+    </ul>
 </nav>
