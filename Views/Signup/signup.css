@@ -74,7 +74,8 @@ input,textarea,select {
     font-weight: bold;
     color: #613B58;
     margin: 20px 0 0 40px;
-    outline: 3px solid transparent;
+    /* outline: 3px solid transparent; */
+    outline-width: 3px;
 }
 
 
