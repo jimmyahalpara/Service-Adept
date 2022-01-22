@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
                             $user->password = UserModel::hashPassword($password_1);
                             $user->phone = $phone;
                             $user->address = $address;
-                            $user->city = $city;
+                            $user->city_id = $city;
                             // echo "<br>GENDER ".$gender;
                             $user->gender = $gender;
                             $user->access_level = 4;

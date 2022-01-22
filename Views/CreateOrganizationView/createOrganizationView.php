@@ -52,7 +52,15 @@
                     <td><textarea name="address" id="input_address" cols="30" rows="10" maxlength="195" title="Address Required" placeholder="Enter Address" required></textarea></td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="city" id="input_city" maxlength="256" placeholder="Enter City name"  required></td>
+                    <td><select name="city" id="input_city">
+                    <?php
+                        $city = new CityModel($pdo);
+                        $result = $city -> read();
+                        foreach ($result as $row){
+                            echo "<option value='".$row['id']."'>".$row['name']."</option>";
+                        }
+                    ?>
+                </select><br></td>
                 </tr>
                 <tr>
                     <td><select name="gender" id="input_gender">
