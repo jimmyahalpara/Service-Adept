@@ -9,6 +9,7 @@
     require_once __DIR__ . "/../Model/PriceType/PriceTypeModel.php";
     require_once __DIR__ . "/../Model/Service/ServiceModel.php";
     require_once __DIR__ . "/../Model/City/CityModel.php";
+    require_once __DIR__ . "/../Model/Provider/ProviderModel.php";
 
 
 
