@@ -148,11 +148,9 @@
             // get retrieved row
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // set values to object properties
-            $this->name = $row['name'];
-
+            
             // check if id is present
-            if($this->name){
+            if($row){
                 return true;
             }
 
