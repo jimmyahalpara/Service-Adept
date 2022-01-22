@@ -212,6 +212,13 @@
             return $price_type_model->getTypeFromId($this->price_type_id);
         }
 
+
+        // get Category for given service
+        function getCategory(){
+            $category_model = new CategoryModel($this->conn);
+            return $category_model->getCategoryFromId($this->category_id);
+        }
+
         
 
     }
