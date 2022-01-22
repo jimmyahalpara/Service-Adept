@@ -15,8 +15,11 @@
                                 } ?>"><a href="/" class="nav-link">Home</a></li>
             <?php
                 if (isset($_SESSION['user_id'])){
-                    echo '<li class="nav-item"><a href="#" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Create Your Organization</a></li>';
+                    echo '<li class="nav-item"><a href="#" class="nav-link">Services</a></li>';
+                    if ($_SESSION['access_level'] == 1){
+                        echo '<li class="nav-item"><a href="createOrganization.php" class="nav-link">Create Organization</a></li>';
+                    }
+                
                 } 
             ?>
             
