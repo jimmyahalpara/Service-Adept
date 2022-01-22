@@ -87,9 +87,11 @@ CREATE TABLE `ServiceOrder` (
   `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `service_provider_id` INT NOT NULL,
-  `quantity` INT NOT NULL,
+  `quantity` INT DEFAULT 0,
   `time` TIME NOT NULL,
-  `date` DATE NOT NULL
+  `date` DATE NOT NULL,
+  `subscription` INT DEFAULT 0,
+  `completed` INT DEFAULT 0
 );
 
 CREATE TABLE `AccessLevel` (
@@ -117,8 +119,7 @@ CREATE TABLE `Payments` (
   `user_id` INT NOT NULL,
   `service_order_id` INT NOT NULL,
   `amount` INT NOT NULL,
-  `due_date` DATETIME,
-  `is_paid` INT NOT NULL
+  `is_paid` INT DEFAULT 0
 );
 
 CREATE TABLE `Category` (
