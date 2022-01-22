@@ -67,6 +67,8 @@
 
             // execute query
             if($stmt->execute()){
+                // set new id 
+                $this->id = $this->conn->lastInsertId();
                 return true;
             }
 

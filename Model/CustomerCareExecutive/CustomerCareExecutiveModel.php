@@ -60,6 +60,8 @@
 
             // execute query
             if ($stmt->execute()){
+                // set new id
+                $this->id = $this->conn->lastInsertId();
                 // reduce access level of user to CustomerCareExecutive
                 $userModel = new UserModel($this->conn);
                 $userModel -> id = $this->user_id;
