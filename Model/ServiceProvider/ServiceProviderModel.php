@@ -147,6 +147,27 @@
 
             return false;
         }
+
+        
+        // function to get provider model by provider id
+        function getProviderModel(){
+            $providerObject = new ProviderModel($this->conn);
+            $providerObject -> id = $this -> provider_id;
+            $providerObject -> readOneById();
+
+            return $providerObject;
+        }
+
+
+        function getServiceModel(){
+            $serviceObject = new ServiceModel($this->conn);
+            $serviceObject -> id = $this -> service_id;
+            $serviceObject -> readOne();
+
+            return $serviceObject;
+        }
+            
+
     }
 
 ?>
