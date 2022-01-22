@@ -69,6 +69,96 @@
             $this->completed = $result['completed'];
 
         }
+
+        // function to get userModel for user_id 
+        function getUserModel(){
+            $user = new UserModel($this->conn);
+            $user->id = $this->user_id;
+            $user->readOne();
+            return $user;
+        }
+
+        // function to get serviceProviderModel for service_provider_id
+        function getServiceProviderModel(){
+            $serviceProvider = new ServiceProviderModel($this->conn);
+            $serviceProvider->id = $this->service_provider_id;
+            $serviceProvider->readOne();
+            return $serviceProvider;
+        }
+
+        // function to get ServiceModel from serviceProviderModel
+        function getServiceModel(){
+            $serviceProvider = $this->getServiceProviderModel();
+            $service = $serviceProvider->getServiceModel();
+            return $service;
+        }
+
+        // function to create service order
+        function create(){
+            // query to insert record
+            $query = "INSERT INTO
+                        " . $this->table_name . "
+                    (
+                        user_id,
+                        service_provider_id,
+                        quantity,
+                        time,
+                        date,
+                        subscription,
+                        completed
+                    ) VALUES (
+                        :user_id,
+                        :service_provider_id,
+                        :quantity,
+                        :time,
+                        :date,
+                        :subscription,
+                        :completed
+                    )";
+
+            // prepare query
+            $stmt = $this->conn->prepare($query);
+
+            // sanitize
+            $this->user_id=htmlspecialchars(strip_tags($this->user_id));
+            $this->service_provider_id=htmlspecialchars(strip_tags($this->service_provider_id));
+            $this->quantity=htmlspecialchars(strip_tags($this->quantity));
+            $this->time=htmlspecialchars(strip_tags($this->time));
+            $this->date=htmlspecialchars(strip_tags($this->date));
+            $this->subscription=htmlspecialchars(strip_tags($this->subscription));
+            $this->completed=htmlspecialchars(strip_tags($this->completed));
+
+            // bind values
+            $stmt->bindParam(":user_id", $this->user_id);
+            $stmt->bindParam(":service_provider_id", $this->service_provider_id);
+            $stmt->bindParam(":quantity", $this->quantity);
+            $stmt->bindParam(":time", $this->time);
+            $stmt->bindParam(":date", $this->date);
+            $stmt->bindParam(":subscription", $this->subscription);
+            $stmt->bindParam(":completed", $this->completed);
+
+            // execute query
+            if($stmt->execute()){
+                if ($this->subscription == 0) {
+                    // get serviceModel from serviceProviderModel
+                    $last_id = $this->conn->lastInsertId();
+                    $service = $this->getServiceModel();
+
+                    // create payment for service order and user_id 
+                    $payment = new PaymentModel($this->conn);
+                    $payment->user_id = $this->user_id;
+                    $payment -> service_order_id = $last_id;
+                    var_dump("last insert id = ".$last_id);
+                    // calculate amount as quantity * service price
+                    $amount = $this->quantity * $service->price;
+                    $payment->amount = $amount;
+                    $payment->create();
+                }
+                return true;
+            }
+
+            return false;
+        }
         
     }
 ?>
