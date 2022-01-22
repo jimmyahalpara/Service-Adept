@@ -76,10 +76,12 @@ CREATE TABLE `OrganizationAdmin` (
 );
 
 CREATE TABLE `ServiceProvider` (
+  `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `provider_id` INT NOT NULL,
-  `service_id` INT NOT NULL,
-  `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT
+  `service_id` INT NOT NULL
 );
+
+ALTER TABLE `ServiceProvider` ADD UNIQUE (`provider_id`, `service_id`);
 
 CREATE TABLE `ServiceOrder` (
   `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
