@@ -1,0 +1,23 @@
+.myAccountMainContainer {
+    padding: 2vw;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+* {
+    /* outline: 1px solid black; */
+
+}
+
+.prettyTable {
+    border-collapse: collapse;
+    width: 100%;
+    
+}
+
+.prettyTable td {
+    padding: 2vh;
+}
+
+.prettyTable tr:nth-child(even){
+    background-color: #f74c558c;
+}

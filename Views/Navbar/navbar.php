@@ -1,7 +1,6 @@
 <style>
     <?php
     require_once __DIR__ . '/navbar.css';
-    define("CURRENT_PAGE", 'home');
     ?>
 </style>
 
@@ -10,7 +9,7 @@
     <button class="btn navbar-toggler"><span class="navbar-toggler-icon" data-toggle="collapse" data-target="#navbarCollapsing"></span></button>
     <div class="collapse navbar-collapse" id="navbarCollapsing">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item <?php if (constant('CURRENT_PAGE') == 'home') {
+            <li class="nav-item <?php if (defined('CURRENT_PAGE') && (constant('CURRENT_PAGE') == 'home')) {
                                     echo "active";
                                 } ?>"><a href="/" class="nav-link">Home</a></li>
             <?php
@@ -45,14 +44,18 @@
             ?>
             <?php
             if (isset($_SESSION['name'])) {
+                $userActive = "";
+                if (defined("CURRENT_PAGE") && (constant("CURRENT_PAGE") == "User")){
+                    $userActive = "active";
+                }
                 echo '<li class="nav-item">
-                    <div class="dropleft">
+                    <div class="dropleft '.$userActive.'">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                             ' . $_SESSION['name'] . '
                         </a>
     
                         <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item">My Account</a>
+                            <a href="userMyaccount.php" class="dropdown-item">My Account</a>
                             <a href="#" class="dropdown-item">My Cart</a>
                             <a href="#" class="dropdown-item">Payments</a>
                             <div class="dropdown-divider"></div>
