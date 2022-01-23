@@ -32,7 +32,8 @@ CREATE TABLE `User` (
   `address` varchar(200),
   `city_id` INT NOT NULL,
   `access_level` INT NOT NULL,
-  `gender` INT NOT NULL
+  `gender` INT NOT NULL,
+  `relogin` INT DEFAULT 0
 );
 
 CREATE TABLE `Service` (
