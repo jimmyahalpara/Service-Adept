@@ -16,5 +16,9 @@
     require_once __DIR__ . "/../Model/Payment/PaymentModel.php";
 
 
+    // require all helpers 
+    require_once __DIR__ . "/../Utilities/helpers.php";
+
+
 
 ?>
