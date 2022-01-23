@@ -11,7 +11,6 @@
 <body>
     <div class="formContainer">
         <form class="DetailForm" method="POST">
-            <h1>Create User</h1>
             <p style="color:red" >
                 <?php 
                     if(isset($_SESSION['createOrganizationError'])){
@@ -20,58 +19,8 @@
                     }
                 ?>
             </p>
-            <table>
-                <tr>
-                    
-                    <td>
-                        <input type="text" name="name" id="input_name" placeholder="Firstname Lastname" maxlength="64" required>
-                    </td>
-                </tr>
-                <tr>
-                    
-                    <td>
-                        <input type="text" name="username" id="input_username" placeholder="Enter Username" title="Should not have any space or special characters" pattern="\w*" maxlength="64" required>
-                    </td>
-                </tr>
-                <tr>
-                    
-                    <td>
-                        <input type="email" name="email" id="input_email" placeholder = "Enter Email Id" maxlength="64" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="password" name="password_1" id="input_password_1" onkeyup="password_1_keyup()" placeholder="Enter password" required></td>
-                </tr>
-                <tr>
-                    <td><input type="password" name="password_2" id="input_password_2" onkeyup="password_2_keyup()" placeholder="Reenter password" required></td>
-                </tr>
-                <tr>
-                    <td><input type="tel" name="phone" id="input_phone" pattern="\d{10}" title="Enter 10 digits of phone number" placeholder="Enter Phone Number" required></td>
-                </tr>
-                <tr>
-                    <td><textarea name="address" id="input_address" cols="30" rows="10" maxlength="195" title="Address Required" placeholder="Enter Address" required></textarea></td>
-                </tr>
-                <tr>
-                    <td><select name="city" id="input_city">
-                    <?php
-                        $city = new CityModel($pdo);
-                        $result = $city -> read();
-                        foreach ($result as $row){
-                            echo "<option value='".$row['id']."'>".$row['name']."</option>";
-                        }
-                    ?>
-                </select><br></td>
-                </tr>
-                <tr>
-                    <td><select name="gender" id="input_gender">
-                        <option value="0">Female</option>
-                        <option value="1">Male</option>
-                        <option value="2" selected>Gender Prefer Not to Tell</option>
-                    </select></td>
-                </tr>
-            </table>
             <h1 id="createOrganizationHeading">Create Organization</h1>
-            <p>The User with above detail will be the first admin of your Organization</p>
+            <p>User Who is currently logged in, will be admin of this organization, if you dont want that, then logout and change user first, and then comeback to this page</p>
             <table>
                 <tr>
                     
