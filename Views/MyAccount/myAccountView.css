@@ -18,6 +18,12 @@
     padding: 2vh;
 }
 
+tr:hover, .prettyTable tr:nth-child(even):hover {
+    background-color: #0000002a;
+}
+
 .prettyTable tr:nth-child(even){
     background-color: #f74c558c;
 }
+
+

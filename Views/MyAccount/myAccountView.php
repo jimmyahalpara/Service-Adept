@@ -71,7 +71,7 @@
         <div class="buttonContainer d-flex mt-3">
             <button class="btn btn-primary mx-1" data-toggle="modal" data-target="#editUserModal">Edit Details</button>
             <button class="btn btn-warning mx-1" data-toggle="modal" data-target="#changePasswordModal">Change Password</button>
-            <button class="btn btn-danger mx-1">Delete Account</button>
+            <button class="btn btn-danger mx-1" data-toggle="modal" data-target="#deleteModal">Delete Account</button>
         </div>
 
         <!-- model for editing user -->
@@ -161,7 +161,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
 
-                    <form action="Controllers/editUser.php" method="POST">
+                    <form action="Controllers/changePassword.php" method="POST">
                         <div class="modal-header">
                             <h5 class="modal-title">Change Password</h5>
                             <button type="button" class="close" data-dismiss="modal" >
@@ -179,7 +179,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="input_passwor2">Renter New Password: </label>
-                                <input type="password" name="password1" id="input_password2" class="form-control">
+                                <input type="password" name="password2" id="input_password2" class="form-control">
                             </div>
 
                         </div>
@@ -194,6 +194,35 @@
                 </div>
             </div>
         </div>
+
+
+        <!-- model to delete user -->
+        <div class="modal fade" id="deleteModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <form action="Controllers/deleteUser.php" method="POST">
+                        <div class="modal-header">
+                            <h5 class="modal-title">WARNING</h5>
+                            <button type="button" class="close" data-dismiss="modal" >
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Do you really want delete this user?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" value="Delete" name="submit" class="btn btn-danger">
+                        </div>
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+
 
     </div>
 </div>
