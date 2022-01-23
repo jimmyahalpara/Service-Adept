@@ -110,6 +110,62 @@
 
         }
 
+        // function to readAll payments for user_id
+        function readAllforUserId(){
+            // query to read all payments for user_id
+            $query = "SELECT
+                        *
+                    FROM
+                        " . $this->table_name . "
+                    WHERE
+                        user_id = ?
+                    ORDER BY
+                        id DESC";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare( $query );
+
+            // sanitize the parameters 
+            $this -> user_id = htmlspecialchars(strip_tags($this -> user_id));
+
+            // bind id of record to be updated
+            $stmt -> bindParam(1, $this -> user_id);
+
+            // execute query
+            $stmt -> execute();
+
+            // get retrieved row
+            return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        // function to readAll payments for service_order_id
+        function readAllforServiceOrderId(){
+            // query to read all payments for service_order_id
+            $query = "SELECT
+                        *
+                    FROM
+                        " . $this->table_name . "
+                    WHERE
+                        service_order_id = ?
+                    ORDER BY
+                        id DESC";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare( $query );
+
+            // sanitize the parameters 
+            $this -> service_order_id = htmlspecialchars(strip_tags($this -> service_order_id));
+
+            // bind id of record to be updated
+            $stmt -> bindParam(1, $this -> service_order_id);
+
+            // execute query
+            $stmt -> execute();
+
+            // get retrieved row
+            return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+        }
+
         // function to set payment as paid 
         function setAsPaid(){
             // query to update record

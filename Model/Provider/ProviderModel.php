@@ -152,6 +152,26 @@
             $this->organization_id = $row['organization_id'];
         }
 
+        // function to readAll for organization_id 
+        function readAllByOrganizationId(){
+            // query to read all records from table
+            $query = "SELECT * FROM " . $this->table_name . " WHERE organization_id=:id";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+
+            // sanitize
+            $this->organization_id=htmlspecialchars(strip_tags($this->organization_id));
+
+            // bind id of record to delete
+            $stmt->bindParam(":id", $this->organization_id);
+
+            $stmt -> execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
         // function for reading one Provider using id attribute 
         function readOneById(){
             // query to read single

@@ -195,7 +195,26 @@
             $this->organization_id = $row['organization_id'];
         }
 
-        
+        // function to readAll by organization_id
+        public function readAllByOrganizationId(){
+            // query to read all records
+            $query = "SELECT * FROM " . $this->table_name . " WHERE organization_id = :organization_id";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+
+            // sanitize
+            $this->organization_id=htmlspecialchars(strip_tags($this->organization_id));
+
+            // bind values
+            $stmt->bindParam(":organization_id", $this->organization_id);
+
+            // execute query
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
 
 
     }

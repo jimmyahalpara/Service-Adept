@@ -70,6 +70,48 @@
 
         }
 
+        // function to readAll by service_provider_id from table
+        function readAllByServiceProviderId(){
+            // query to read all service orders
+            $query = "SELECT * FROM " . $this->table_name . " WHERE service_provider_id = ?";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+
+            // sanitize the value 
+            $this->service_provider_id=htmlspecialchars(strip_tags($this->service_provider_id));
+
+            // bind id of service order to be updated
+            $stmt->bindParam(1, $this->service_provider_id);
+
+            // execute query
+            $stmt->execute();
+
+            return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+
+        }
+
+        // function to readAll by user_id from table
+        function readAllByUserId(){
+            // query to read all service orders
+            $query = "SELECT * FROM " . $this->table_name . " WHERE user_id = ?";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+
+            // sanitize the value 
+            $this->user_id=htmlspecialchars(strip_tags($this->user_id));
+
+            // bind id of service order to be updated
+            $stmt->bindParam(1, $this->user_id);
+
+            // execute query
+            $stmt->execute();
+
+            return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+
+        }
+
         // function to get userModel for user_id 
         function getUserModel(){
             $user = new UserModel($this->conn);

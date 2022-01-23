@@ -172,6 +172,89 @@
             $this->category_id = $row['category_id'];
         }
 
+        // function to readAll services by category_id
+        public function readAllByCategoryId(){
+            // query to read all services by category_id
+            $query = "SELECT * FROM " . $this->table_name . " WHERE category_id = ?";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+
+            // bind parameters 
+            $stmt->bindParam(1, $this->category_id);
+
+            // execute query
+            $stmt->execute();
+
+            // get retrieved row
+            $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // set values to object properties
+            return $row;
+        }
+
+        // function to readAll services by organization_id
+        public function readAllByOrganizationId(){
+            // query to read all services by organization_id
+            $query = "SELECT * FROM " . $this->table_name . " WHERE organization_id = ?";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+
+            // bind parameters 
+            $stmt->bindParam(1, $this->organization_id);
+
+            // execute query
+            $stmt->execute();
+
+            // get retrieved row
+            $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // set values to object properties
+            return $row;
+        }
+
+        // function to readAll services by city_id
+        public function readAllByCityId(){
+            // query to read all services by city_id
+            $query = "SELECT * FROM " . $this->table_name . " WHERE city_id = ?";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+
+            // bind parameters 
+            $stmt->bindParam(1, $this->city_id);
+
+            // execute query
+            $stmt->execute();
+
+            // get retrieved row
+            $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // set values to object properties
+            return $row;
+        }
+
+        // function to readAll services by price_type_id
+        public function readAllByPriceTypeId(){
+            // query to read all services by price_type_id
+            $query = "SELECT * FROM " . $this->table_name . " WHERE price_type_id = ?";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+
+            // bind parameters 
+            $stmt->bindParam(1, $this->price_type_id);
+
+            // execute query
+            $stmt->execute();
+
+            // get retrieved row
+            $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // set values to object properties
+            return $row;
+        }
         // function to check if id is present or not
         function isIdPresent(){
             // query to read single record

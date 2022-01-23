@@ -122,6 +122,46 @@
 
         }
 
+        // function to readAll by Provider 
+        function readAllByProvider(){
+            // query to read all service providers
+            $query = "SELECT * FROM " . $this->table_name . " WHERE provider_id = :provider_id";
+
+            // prepare query
+            $stmt = $this->conn->prepare($query);
+
+            // sanitize
+            $this -> provider_id = htmlspecialchars(strip_tags($this -> provider_id));
+
+            // bind parametrs
+            $stmt -> bindParam(":provider_id", $this -> provider_id);
+
+            // execute query
+            $stmt -> execute();
+
+            return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        // function to readAll by Service
+        function readAllByService(){
+            // query to read all service providers
+            $query = "SELECT * FROM " . $this->table_name . " WHERE service_id = :service_id";
+
+            // prepare query
+            $stmt = $this->conn->prepare($query);
+
+            // sanitize
+            $this -> service_id = htmlspecialchars(strip_tags($this -> service_id));
+
+            // bind parametrs
+            $stmt -> bindParam(":service_id", $this -> service_id);
+
+            // execute query
+            $stmt -> execute();
+
+            return $stmt -> fetchAll(PDO::FETCH_ASSOC);
+        }
+
 
         // check if id exists or not 
         function isIdPresnet(){
