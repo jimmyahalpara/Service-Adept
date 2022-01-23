@@ -25,6 +25,7 @@
         public $city_id;
         public $access_level;
         public $gender;
+        public $relogin;
 
 
 
@@ -121,6 +122,11 @@
             $stmt -> bindParam(':id', $this -> id);
 
             $result = $stmt -> execute();
+            if ($result){
+                return true;
+            } else {
+                return false;
+            }
             // print_r($result);
 
         }
@@ -145,6 +151,7 @@
                 $this -> city_id = $row['city_id'];
                 $this -> access_level = $row['access_level'];
                 $this -> gender = $row['gender'];
+                $this -> relogin = $row['relogin'];
             } else {
                 throw new Exception("No Entry Found with id = ".$this -> id." in table ".$this -> table_name);
             }
@@ -241,6 +248,8 @@
                 $this -> city_id = $row['city_id'];
                 $this -> access_level = $row['access_level'];
                 $this -> gender = $row['gender'];
+                $this -> relogin = $row['relogin'];
+
                 return true;
             } else {
                 return false;
@@ -255,6 +264,30 @@
             return hash($hash, $salt . $password);
         }
 
+
+        // function to set relogin required
+        public function setReloginRequired(){
+            $query = "UPDATE " . $this->table_name . " SET relogin = 1 WHERE id = ?";
+            $stmt = $this -> conn -> prepare($query);
+            $stmt -> bindParam(1, $this -> id);
+            $stmt -> execute();
+        }
+
+        // function to set relogin not required
+        public function setReloginNotRequired(){
+            $query = "UPDATE " . $this->table_name . " SET relogin = 0 WHERE id = ?";
+            $stmt = $this -> conn -> prepare($query);
+            $stmt -> bindParam(1, $this -> id);
+            $stmt -> execute();
+        }
+
+        // function to get city from CityModel 
+        public function getCity(){
+
+            $city = new CityModel($this -> conn);
+            // var_dump($this -> city_id);
+            return $city -> getCityNameById($this -> city_id);
+        }
 
         
     }
