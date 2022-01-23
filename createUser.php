@@ -46,7 +46,6 @@
             $user = new UserModel($pdo);
             // check if username already exists
             $user -> username = $username;
-            var_dump($user -> isUsernamePresent());
             if ($user -> isUsernamePresent()){
                 setUserCreationError("Username already exists");
                 return;
@@ -54,7 +53,6 @@
 
             $user -> email = $email;
             if ($user -> isEmailPresent()){
-                var_dump("Going here");
                 setUserCreationError("Email already exists");
                 return;
             }
