@@ -50,7 +50,7 @@
             $stmt -> execute();
 
             $result = $stmt -> fetch(PDO::FETCH_ASSOC);
-
+            // var_dump($result);
             if($result){
                 return $result['name'];
             } else {
