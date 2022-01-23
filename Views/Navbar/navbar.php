@@ -18,12 +18,31 @@
                     echo '<li class="nav-item"><a href="#" class="nav-link">Services</a></li>';
                     if ($_SESSION['access_level'] == 1){
                         echo '<li class="nav-item"><a href="createOrganization.php" class="nav-link">Create Organization</a></li>';
+                    } else if ($_SESSION['access_level'] >= 2 && $_SESSION['access_level'] <= 4){
+                        echo '<li class="nav-item">
+                        <div class="dropleft">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                Manage Organization
+                            </a><div class="dropdown-menu">';
+                        if ($_SESSION['access_level'] == 3 || $_SESSION['access_level'] == 4){
+                            echo '<a href="#" class="dropdown-item">Services</a>';
+                            echo '<a href="#" class="dropdown-item">Providers</a>';
+                            
+                        }
+                        if ($_SESSION['access_level'] == 4){
+                            echo '<a href="#" class="dropdown-item">Managers</a>';
+                            echo '<a href="#" class="dropdown-item">Admins</a>';
+                        }
+                        echo '<a href="#" class="dropdown-item">Orders</a>
+                            </div>
+                            </div>
+                            </li>';
+                        
                     }
                 
                 } 
-            ?>
-            
 
+            ?>
             <?php
             if (isset($_SESSION['name'])) {
                 echo '<li class="nav-item">
@@ -47,7 +66,7 @@
             }
             ?>
 
-
+            
         </ul>
     </div>
 </nav>
