@@ -1,5 +1,3 @@
-<pre>
-
     <?php 
     session_start();
     
@@ -25,7 +23,7 @@
             session_destroy();
             header("Location: /service_adept/");
         } else if ($user -> access_level == 2 || $user -> access_level == 3){
-            setUserUpdateError("Cannot delete your account because you are Manager or Admin. Contact your organization admin");
+            setUserUpdateError("Cannot delete your account because you are Manager or Provider. Contact your organization admin");
             return;
         } else if ($user -> access_level == 4){
             $user_id = $user -> id;
@@ -61,4 +59,3 @@
     
     
     ?>
-</pre>
