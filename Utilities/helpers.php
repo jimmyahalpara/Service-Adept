@@ -6,5 +6,13 @@
         }
     }
 
+    function loginAccessRequired($level){
+        loginRequired();
+        if ($_SESSION['access_level'] < $level){
+            header('Location: /service_adept/');
+            exit();
+        }
+    }
+
 
 ?>

@@ -289,6 +289,15 @@
             return $city -> getCityNameById($this -> city_id);
         }
 
+        public function getGender(){
+            if ($this -> gender == 0){
+                return "Female";
+            } else if ($this -> gender == 1){
+                return "Male";
+            } else {
+                return "Prefer Not to Tell";
+            }
+        }
         
     }
 
