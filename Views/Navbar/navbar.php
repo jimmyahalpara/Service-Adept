@@ -13,43 +13,44 @@
                                     echo "active";
                                 } ?>"><a href="/" class="nav-link">Home</a></li>
             <?php
-                if (isset($_SESSION['user_id'])){
-                    echo '<li class="nav-item"><a href="#" class="nav-link">Services</a></li>';
-                    if ($_SESSION['access_level'] == 1){
-                        echo '<li class="nav-item"><a href="createOrganization.php" class="nav-link">Create Organization</a></li>';
-                    } else if ($_SESSION['access_level'] >= 2 && $_SESSION['access_level'] <= 4){
-                        echo '<li class="nav-item">
-                        <div class="dropleft">
+            if (isset($_SESSION['user_id'])) {
+                echo '<li class="nav-item"><a href="#" class="nav-link">Services</a></li>';
+                if ($_SESSION['access_level'] == 1) {
+                    echo '<li class="nav-item"><a href="createOrganization.php" class="nav-link">Create Organization</a></li>';
+                } else if ($_SESSION['access_level'] >= 2 && $_SESSION['access_level'] <= 4) {
+                    $orgSelect = "";
+                    if (defined('CURRENT_PAGE') && (constant('CURRENT_PAGE') == 'Organization')) {
+                        $orgSelect = "active";
+                    }
+                    echo '<li class="nav-item">
+                        <div class="dropleft ' . $orgSelect . '">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                                 Manage Organization
                             </a><div class="dropdown-menu">';
-                        if ($_SESSION['access_level'] == 3 || $_SESSION['access_level'] == 4){
-                            echo '<a href="#" class="dropdown-item">Services</a>';
-                            echo '<a href="#" class="dropdown-item">Providers</a>';
-                            
-                        }
-                        if ($_SESSION['access_level'] == 4){
-                            echo '<a href="#" class="dropdown-item">Managers</a>';
-                            echo '<a href="#" class="dropdown-item">Admins</a>';
-                        }
-                        echo '<a href="#" class="dropdown-item">Orders</a>
+                    if ($_SESSION['access_level'] == 3 || $_SESSION['access_level'] == 4) {
+                        echo '<a href="manageProviders.php" class="dropdown-item">Services</a>';
+                        echo '<a href="#" class="dropdown-item">Providers</a>';
+                    }
+                    if ($_SESSION['access_level'] == 4) {
+                        echo '<a href="#" class="dropdown-item">Managers</a>';
+                        echo '<a href="#" class="dropdown-item">Admins</a>';
+                    }
+                    echo '<a href="#" class="dropdown-item">Orders</a>
                             </div>
                             </div>
                             </li>';
-                        
-                    }
-                
-                } 
+                }
+            }
 
             ?>
             <?php
             if (isset($_SESSION['name'])) {
                 $userActive = "";
-                if (defined("CURRENT_PAGE") && (constant("CURRENT_PAGE") == "User")){
+                if (defined("CURRENT_PAGE") && (constant("CURRENT_PAGE") == "User")) {
                     $userActive = "active";
                 }
                 echo '<li class="nav-item">
-                    <div class="dropleft '.$userActive.'">
+                    <div class="dropleft ' . $userActive . '">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                             ' . $_SESSION['name'] . '
                         </a>
@@ -69,7 +70,7 @@
             }
             ?>
 
-            
+
         </ul>
     </div>
 </nav>
