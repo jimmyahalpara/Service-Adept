@@ -30,13 +30,18 @@
         $admin -> user_id = $_SESSION['user_id'];
         $admin -> readOne();
         $organization_id = $admin -> organization_id;
+    } else if ($_SESSION['access_level'] == 3) {
+        $manager = new OrganizationManagerModel($pdo);
+        $manager -> user_id = $_SESSION['user_id'];
+        $manager -> readOne();
+        $organization_id = $manager -> organization_id;
     }
 
     $provider = new ProviderModel($pdo);
     $provider -> organization_id = $organization_id;
     $providers = $provider -> readAllByOrganizationId();
     // var_dump($providers);
-    require_once __DIR__ . '/Views/ManageProvider/managerProviderView.php';
+    require_once __DIR__ . '/Views/ManageProvider/manageProviderView.php';
 ?>
 
 

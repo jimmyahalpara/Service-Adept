@@ -19,13 +19,13 @@
     </p>
     <table id="providerList" class="w-100">
         <tr>
+            <th>Name: </th>
             <th>Email: </th>
             <th>Username: </th>
-            <th>Name: </th>
             <th>Phone: </th>
             <th>Actions: </th>
         </tr>
-
+        
         <?php 
             foreach ($providers as $key => $value) {
                 $currentUser = new UserModel($pdo);
@@ -39,7 +39,8 @@
                 echo "<td>";
 
                 echo '<button class="btn btn-info" data-toggle="collapse" data-target="#user'.$currentUser -> id.'">Show Info</button>
-                <button class="btn btn-danger">Delete</button>';
+                <form onsubmit=\'return confirm("Do you really want to remove this user as provider?")\' style="display:inline-block" method="POST" action="Controllers/deleteOtherUser.php"><input type="hidden" name="access_level" value="2"><input type="hidden" name="user_id" value="'.$currentUser -> id.'"><button type="submit" name="submit" class="btn btn-warning">Delete Provider</button></form><form action="Controllers/deleteOtherUser.php" method="POST" onsubmit=\'return confirm("Do you really want to delete this user?")\' class="pl-1 d-inline-block"><input type="hidden" name="user_id" value="'.$currentUser -> id.'"><input type="hidden" name="access_level" value="2"><input type="hidden" name="delete_user" value="1"><button name="submit" value="submit" class="btn btn-danger">Delete User Permanently</button></form>';
+                
 
                 echo "</td></tr>";
                 echo '<tr class="collapse" id="user'.$currentUser -> id.'" data-parent="#providerContainer"><td colspan="5"> 

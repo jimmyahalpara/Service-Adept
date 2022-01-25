@@ -9,7 +9,13 @@
     function setUserCreationError($message){
         $_SESSION['createUserError'] = $message;
         var_dump($_SESSION['createUserError']);
-        header("Location: /service_adept/manageProviders.php");
+        if ($_POST['access_level'] == 2){
+            header("Location: /service_adept/manageProviders.php");
+        } else if ($_POST['access_level'] == 3){
+            header("Location: /service_adept/manageManagers.php");
+        } else if ($_POST['access_level'] == 4){
+            header("Location: /service_adept/manageAdmin.php");
+        }
     }
     if (isset($_POST['submit']) && isset($_SESSION['access_level']) && ($_SESSION['access_level'] == 3 || $_SESSION['access_level'] == 4)){
         if (isset($_POST['name']) && isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password_1']) && isset($_POST['password_2']) && isset($_POST['phone']) && isset($_POST['address']) && isset($_POST['city']) && isset($_POST['gender']) && isset($_POST['access_level'])){
@@ -43,16 +49,16 @@
             $user = new UserModel($pdo);
             // check if username already exists
             $user -> username = $username;
-            if ($user -> isUsernamePresent()){
-                setUserCreationError("Username already exists");
-                return;
-            } 
+            // if ($user -> isUsernamePresent()){
+            //     setUserCreationError("Username already exists");
+            //     return;
+            // } 
 
             $user -> email = $email;
-            if ($user -> isEmailPresent()){
-                setUserCreationError("Email already exists");
-                return;
-            }
+            // if ($user -> isEmailPresent()){
+            //     setUserCreationError("Email already exists");
+            //     return;
+            // }
             $user -> username = $username;
             $user -> name = $name;
             $user -> email = $email;
@@ -62,7 +68,13 @@
             $user -> address = $address;
             $user -> city_id = $city;
             $user -> access_level = $_POST['access_level'];
-            $user -> create();
+            
+            try {
+                $user -> create();
+            } catch (Exception $e) {
+                setUserCreationError($e -> errorInfo[2]);
+                return;
+            }
             // header("Location: ". dirname($_SERVER['PHP_SELF']). "/login.php");
             // return;
 
@@ -73,7 +85,7 @@
                     $admin -> user_id = $_SESSION['user_id'];
                     $admin -> readOne();
                     $organization_id = $admin -> organization_id;
-                } else if ($_SESSION['access_level']) {
+                } else if ($_SESSION['access_level'] == 3) {
                     $manager = new OrganizationManagerModel($pdo);
                     $manager -> user_id = $_SESSION['user_id'];
                     $manager -> readOne();
@@ -84,7 +96,43 @@
                 $provider -> user_id = $user -> id;
                 $provider -> organization_id = $organization_id;
                 $provider -> create();
-            } 
+
+                // redirect to manageProviders.php
+                header("Location: /service_adept/manageProviders.php");
+            } else if ($_POST['access_level'] == 3){
+                if ($_SESSION['access_level'] == 4){
+                    // get organization id for current user
+                    $admin = new OrganizationAdminModel($pdo);
+                    $admin -> user_id = $_SESSION['user_id'];
+                    $admin -> readOne();
+                    $organization_id = $admin -> organization_id;
+                    // create new Provider 
+                    $manager = new OrganizationManagerModel($pdo);
+                    $manager -> user_id = $user -> id;
+                    $manager -> organization_id = $organization_id;
+                    $manager -> create();
+                    
+                    // redirect to manageProviders.php
+                    header("Location: /service_adept/manageManagers.php");
+                }
+            } else if ($_POST['access_level'] == 4){
+                if ($_SESSION['access_level'] == 4){
+                    // get organization id for current user
+                    $admin = new OrganizationAdminModel($pdo);
+                    $admin -> user_id = $_SESSION['user_id'];
+                    $admin -> readOne();
+                    $organization_id = $admin -> organization_id;
+                    // create new Provider 
+                    $admin = new OrganizationAdminModel($pdo);
+                    $admin -> user_id = $user -> id;
+                    $admin -> organization_id = $organization_id;
+                    $admin -> create();
+                    
+                    // redirect to manageProviders.php
+                    header("Location: /service_adept/manageAdmin.php");
+                }
+            }
+
 
 
         }
