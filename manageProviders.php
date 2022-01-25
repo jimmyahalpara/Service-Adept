@@ -21,15 +21,13 @@
     define("CURRENT_PAGE", "Organization");
     require_once __DIR__ . '/Views/Navbar/navbar.php';
 
-    $user = new UserModel($pdo);
-    $user -> id = $_SESSION['user_id'];
-    $user -> readOne();
+    
 
 
-    if ($user -> access_level == 4){
+    if ($_SESSION['access_level'] == 4){
         // get organization id
         $admin = new OrganizationAdminModel($pdo);
-        $admin -> user_id = $user -> id;
+        $admin -> user_id = $_SESSION['user_id'];
         $admin -> readOne();
         $organization_id = $admin -> organization_id;
     }
