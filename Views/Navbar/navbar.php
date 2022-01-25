@@ -32,8 +32,8 @@
                         echo '<a href="manageProviders.php" class="dropdown-item">Providers</a>';
                     }
                     if ($_SESSION['access_level'] == 4) {
-                        echo '<a href="#" class="dropdown-item">Managers</a>';
-                        echo '<a href="#" class="dropdown-item">Admins</a>';
+                        echo '<a href="manageManagers.php" class="dropdown-item">Managers</a>';
+                        echo '<a href="manageAdmin.php" class="dropdown-item">Admins</a>';
                     }
                     echo '<a href="#" class="dropdown-item">Orders</a>
                             </div>
