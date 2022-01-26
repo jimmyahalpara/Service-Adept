@@ -60,7 +60,7 @@ CREATE TABLE `provider` (
 
 CREATE TABLE `Organization` (
   `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `name` varchar(128) NOT NULL 
+  `name` varchar(128) NOT NULL UNIQUE
   
 );
 
@@ -87,7 +87,7 @@ ALTER TABLE `ServiceProvider` ADD UNIQUE (`provider_id`, `service_id`);
 CREATE TABLE `ServiceOrder` (
   `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
-  `service_provider_id` INT NOT NULL,
+  `service_provider_id` INT,
   `quantity` INT DEFAULT 0,
   `time` TIME NOT NULL,
   `date` DATE NOT NULL,
@@ -163,7 +163,7 @@ ALTER TABLE `ServiceProvider` ADD FOREIGN KEY (`service_id`) REFERENCES `Service
 
 ALTER TABLE `ServiceOrder` ADD FOREIGN KEY (`user_id`) REFERENCES `User` (`id`);
 
-ALTER TABLE `ServiceOrder` ADD FOREIGN KEY (`service_provider_id`) REFERENCES `ServiceProvider` (`id`);
+ALTER TABLE `ServiceOrder` ADD FOREIGN KEY (`service_provider_id`) REFERENCES `ServiceProvider` (`id`) ON DELETE SET NULL;
 
 ALTER TABLE `CustomerCareExecutive` ADD FOREIGN KEY (`user_id`) REFERENCES `User` (`id`);
 
