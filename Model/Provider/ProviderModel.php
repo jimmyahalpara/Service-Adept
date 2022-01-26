@@ -148,6 +148,7 @@
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             
             // set values to object properties
+            $this -> id = $row['id'];
             $this->user_id = $row['user_id'];
             $this->organization_id = $row['organization_id'];
         }
