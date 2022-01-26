@@ -14,5 +14,15 @@
         }
     }
 
+    // function to create and execute custom sql query
+    function executeQuery($pdo, $query, $params){
+        $stmt = $pdo->prepare($query);
+        $stmt-> execute($params);
+
+        // get result 
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
 
 ?>

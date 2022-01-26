@@ -28,7 +28,7 @@
                                 Manage Organization
                             </a><div class="dropdown-menu">';
                     if ($_SESSION['access_level'] == 3 || $_SESSION['access_level'] == 4) {
-                        echo '<a href="#" class="dropdown-item">Services</a>';
+                        echo '<a href="manageServices.php" class="dropdown-item">Services</a>';
                         echo '<a href="manageProviders.php" class="dropdown-item">Providers</a>';
                     }
                     if ($_SESSION['access_level'] == 4) {
