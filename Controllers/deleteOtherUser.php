@@ -21,8 +21,26 @@
     if (isset($_POST['submit']) && isset($_SESSION['access_level']) && ($_SESSION['access_level'] == 3 || $_SESSION['access_level'] == 4)){
         if (isset($_POST['access_level']) && isset($_POST['user_id'])){
             
+            // if provider, check if there are any ServiceProvider
             
             if ($_POST['access_level'] == 2){
+               $provider = new ProviderModel($pdo);
+                $provider -> user_id = $_POST['user_id'];
+                $provider -> readOne();
+
+                $provider_id = $provider -> id;
+
+                // query to select all service providers
+                var_dump($provider);
+                $query = "SELECT * FROM ServiceProvider WHERE provider_id = :provider_id";
+                $param = array(
+                    "provider_id" => $provider_id
+                );
+                $result = executeQuery($pdo, $query, $param);
+                var_dump($result);
+                if (count($result) > 0){
+                    setUserCreationError("Cannot delete user. There are Service Providers associated with this user.");
+                } 
                 if ($_SESSION['access_level'] == 4){
                     // get organization id for current user
                     $admin = new OrganizationAdminModel($pdo);
