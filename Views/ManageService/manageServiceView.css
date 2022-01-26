@@ -1,0 +1,24 @@
+#providerContainer {
+    padding: 2vw;
+}
+
+* {
+    /* outline: 1px solid #ccc; */
+}
+
+table, th, tr, td {
+    /* border: 1px solid black; */
+    border-collapse: collapse;
+    padding: 1vh;
+    border-bottom: 1px solid black;
+    transition: all 0.3s ease-in-out;
+}
+
+tr:hover {
+    background-color: rgba(0, 0, 0, 0.083);
+}
+
+th {
+    background-color: #f74c55;
+    color: white;
+}
