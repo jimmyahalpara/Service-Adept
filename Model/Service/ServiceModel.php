@@ -23,6 +23,7 @@
         public $city_id;
         public $organization_id;
         public $category_id;
+        public $visibility;
 
 
         // constructor with $db as database connection
@@ -196,7 +197,7 @@
         // function to readAll services by organization_id
         public function readAllByOrganizationId(){
             // query to read all services by organization_id
-            $query = "SELECT * FROM " . $this->table_name . " WHERE organization_id = ?";
+            $query = "SELECT * FROM " . $this->table_name . " WHERE organization_id = ? ORDER BY visibility DESC";
 
             // prepare query statement
             $stmt = $this->conn->prepare($query);
@@ -302,7 +303,25 @@
             return $category_model->getCategoryFromId($this->category_id);
         }
 
-        
+        // function updateVisibility
+        function updateVisibility(){
+            // query to update visibility
+            $query = "UPDATE " . $this->table_name . " SET visibility = ? WHERE id = ?";
+
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+
+            // bind parameters 
+            $stmt->bindParam(1, $this->visibility);
+            $stmt->bindParam(2, $this->id);
+
+            // execute query
+            if($stmt->execute()){
+                return true;
+            }
+
+            return false;
+        }
 
     }
 

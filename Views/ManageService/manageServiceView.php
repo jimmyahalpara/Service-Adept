@@ -22,8 +22,12 @@ require_once __DIR__ . "/../../Utilities/preventDirectAccess.php";
 
         <?php
         foreach ($services as $value) {
-            echo '<div class="card m-2 border-dark">
-            <div class="card-header">
+            if ($value['visibility'] == 1) {
+                echo '<div class="card m-2 border-dark">';
+            } else {
+                echo '<div class="card m-2" style="border:3px solid red">';
+            }
+            echo '<div class="card-header">
                 ' . $categories[$value['category_id'] - 1]['name'] . '
             </div>
             <div class="card-body">
@@ -89,6 +93,15 @@ require_once __DIR__ . "/../../Utilities/preventDirectAccess.php";
                         <input type="hidden" name="service_id" value="' . $value['id'] . '">
                         <button class="btn btn-danger my-1" name="submit" value="submit">Delete Service</button>
                     </form>
+                    <form action="Controllers/changeVisiblity.php" method="POST" class="d-inline-block">';
+                        if ($value['visibility'] == 1) {
+                            echo '<input type="hidden" name="visibility" value="0">
+                            <button class="btn btn-outline-danger my-1" name="submit" value="'.$value['id'].'">Make Invisible</button>';
+                        } else {
+                            echo '<input type="hidden" name="visibility" value="1">
+                            <button class="btn btn-success my-1" name="submit" value="'.$value['id'].'">Make Visible</button>';
+                        }
+                    echo '</form>
                 </div>
             </div>
         </div>

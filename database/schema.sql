@@ -44,7 +44,8 @@ CREATE TABLE `Service` (
   `price` FLOAT NOT NULL,
   `city_id` INT NOT NULL,
   `organization_id` INT NOT NULL,
-  `category_id` INT NOT NULL
+  `category_id` INT NOT NULL,
+  `visibility` INT DEFAULT 1,
 );
 
 CREATE TABLE `PriceType` (
