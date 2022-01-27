@@ -25,7 +25,7 @@ require_once __DIR__ . "/../../Utilities/preventDirectAccess.php";
             if ($value['visibility'] == 1) {
                 echo '<div class="card m-2 border-dark">';
             } else {
-                echo '<div class="card m-2" style="border:3px solid red">';
+                echo '<div class="card m-2 bg-danger text-white">';
             }
             echo '<div class="card-header">
                 ' . $categories[$value['category_id'] - 1]['name'] . '
