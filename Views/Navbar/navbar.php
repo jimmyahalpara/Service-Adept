@@ -11,10 +11,14 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item <?php if (defined('CURRENT_PAGE') && (constant('CURRENT_PAGE') == 'home')) {
                                     echo "active";
-                                } ?>"><a href="/" class="nav-link">Home</a></li>
+                                } ?>"><a href="userDetail.php" class="nav-link">Home</a></li>
             <?php
             if (isset($_SESSION['user_id'])) {
-                echo '<li class="nav-item"><a href="#" class="nav-link">Services</a></li>';
+                $serviceSelect = "";
+                        if (defined('CURRENT_PAGE') && (constant('CURRENT_PAGE') == 'Services')){
+                            $serviceSelect = "active";
+                        }
+                echo '<li class="nav-item"><a href="services.php" class="nav-link '.$serviceSelect.'">Services</a></li>';
                 if ($_SESSION['access_level'] == 1) {
                     echo '<li class="nav-item"><a href="createOrganization.php" class="nav-link">Create Organization</a></li>';
                 } else if ($_SESSION['access_level'] >= 2 && $_SESSION['access_level'] <= 4) {
