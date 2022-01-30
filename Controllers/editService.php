@@ -24,6 +24,12 @@
             $description = $_POST['description'];
             $price = $_POST['price'];
 
+            // check if price is numeric
+            if (!is_numeric($price)) {
+                setUserCreationError("Price must be a number.");
+                return;
+            }
+
             // checking if email is valid
             if (strlen($service_name) == 0 || strlen($category_id) == 0 || strlen($pricetype) == 0 || strlen($city) == 0 || strlen($description) == 0 || strlen($price) == 0) {
                 setUserCreationError("All Fields are required");

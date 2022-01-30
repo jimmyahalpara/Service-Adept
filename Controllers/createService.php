@@ -22,6 +22,8 @@
             $description = $_POST['description'];
             $price = $_POST['price'];
 
+
+
             // checking if email is valid
             if (strlen($service_name) == 0 || strlen($category_id) == 0 || strlen($pricetype) == 0 || strlen($city) == 0 || strlen($description) == 0 || strlen($price) == 0) {
                 setUserCreationError("All Fields are required");
@@ -29,7 +31,11 @@
             }
 
 
-
+            // check if price is valid
+            if (!is_numeric($price)) {
+                setUserCreationError("Price must be a number");
+                return;
+            }
 
             if ($_SESSION['access_level'] == 4) {
                 // get organization id for current user
