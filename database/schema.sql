@@ -87,7 +87,7 @@ ALTER TABLE `ServiceProvider` ADD UNIQUE (`provider_id`, `service_id`);
 
 CREATE TABLE `ServiceOrder` (
   `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `user_id` INT NOT NULL,
+  `user_id` INT,
   `service_provider_id` INT,
   `quantity` INT DEFAULT 0,
   `time` TIME NOT NULL,
@@ -162,7 +162,7 @@ ALTER TABLE `ServiceProvider` ADD FOREIGN KEY (`provider_id`) REFERENCES `provid
 
 ALTER TABLE `ServiceProvider` ADD FOREIGN KEY (`service_id`) REFERENCES `Service` (`id`);
 
-ALTER TABLE `ServiceOrder` ADD FOREIGN KEY (`user_id`) REFERENCES `User` (`id`);
+ALTER TABLE `ServiceOrder` ADD FOREIGN KEY (`user_id`) REFERENCES `User` (`id`) ON DELETE SET NULL;
 
 ALTER TABLE `ServiceOrder` ADD FOREIGN KEY (`service_provider_id`) REFERENCES `ServiceProvider` (`id`) ON DELETE SET NULL;
 
