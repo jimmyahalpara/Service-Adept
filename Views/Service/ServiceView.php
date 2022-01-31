@@ -67,6 +67,9 @@ require_once __DIR__ . "/../../Utilities/preventDirectAccess.php";
                         ?>
                     </select>
                 </div>
+                <div class="form-group">
+                    <input type="reset" value="Reset" class="form-control">
+                </div>
                 <button type="submit" class="form-control btn btn-info" name="submit">Save</button>
             </form>
         </div>
@@ -85,7 +88,38 @@ require_once __DIR__ . "/../../Utilities/preventDirectAccess.php";
             </div>
 
         </div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, harum maxime, nisi placeat rem molestiae esse sequi alias tempora accusantium laborum corporis praesentium eum iste! Et, eligendi veniam dolores error quis, quo nisi obcaecati, tempora porro veritatis dignissimos similique autem consequuntur assumenda ut officia perferendis sunt nam minima deserunt! Repudiandae sapiente libero repellat suscipit laudantium sint odit, quam eligendi asperiores accusantium non aliquid praesentium minus iste aut saepe esse debitis impedit consequatur maxime corporis. Mollitia quisquam dolorum deleniti perferendis consequatur ipsum dolorem aliquid magni vel harum, voluptatibus, culpa molestiae aspernatur veritatis reprehenderit nisi? Soluta eligendi repellendus doloremque doloribus rerum illo. Eos sunt nisi expedita placeat hic inventore odio. Repudiandae, harum inventore sapiente vero modi doloribus optio quibusdam beatae nulla adipisci ipsam aliquid voluptas eos nobis illum voluptatibus sed, explicabo quisquam vel assumenda. Voluptatum ut facere error dicta quia voluptas, aliquam a at repudiandae unde, vero earum ipsa officia soluta, quaerat ab reprehenderit molestias culpa impedit cum eveniet. Voluptates nulla cupiditate laudantium totam nihil ducimus soluta autem accusamus quis culpa nostrum dolore ratione cumque suscipit saepe mollitia laborum quaerat error atque deserunt eos, illo accusantium! Facilis amet facere quia, ducimus eum vitae, mollitia ratione eos dicta quaerat rerum atque officia commodi.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos quod totam beatae explicabo fugit reprehenderit voluptatibus eaque soluta, libero numquam. Cum officia atque placeat non expedita qui quisquam, porro facere! Culpa similique vel, voluptatibus quas minus quaerat, optio maxime adipisci beatae animi illum odit nesciunt rerum possimus consequatur enim accusantium quidem, soluta amet provident obcaecati itaque? Perferendis iste expedita quos praesentium cupiditate ut facilis minima similique sapiente asperiores. Obcaecati harum atque mollitia necessitatibus, aspernatur odio dolores et nulla pariatur magnam totam molestiae fuga eligendi maiores distinctio sunt ad laudantium aliquid numquam eius maxime. Dicta, labore asperiores temporibus magnam esse quos blanditiis, fugiat impedit porro, modi doloribus accusamus inventore nulla facilis illo necessitatibus odio consectetur possimus quibusdam corrupti. Quibusdam, voluptatem reprehenderit? Officia ut delectus, dolor atque dolorem doloremque accusamus earum! Unde obcaecati minus libero alias nostrum distinctio tempora facilis suscipit fugit autem! Sit provident ipsum facere ab voluptatem. Recusandae aperiam praesentium commodi ea voluptates. Doloremque nam officia laborum modi nobis qui, eum adipisci vero aspernatur repudiandae natus quibusdam eaque in mollitia ipsa soluta esse illo eos blanditiis ipsum distinctio sed dignissimos. Voluptate libero molestiae, nihil, natus minima totam impedit optio recusandae debitis sit odit mollitia quod? Quos id repellendus fugit facere!
+        <div class="serviceItemContainer row">
+            <?php 
+            foreach ($services as $serv) {
+                
+                echo '<div class="serviceItemsContainer col-sm-6 col-md-4 col-lg-3 p-3 d-flex justify-content-center align-items-center" id="serviceItem1">
+                    <div class="serviceItem w-100 m-0">
+                        <div class="serviceImageContainer h-75 d-flex align-items-center justify-content-center pt-3">
+                            <img src="https://i.pinimg.com/originals/8e/fb/11/8efb11a0432a2416fbc57c90c320151c.png" alt="" class="h-100 w-75">
+                        </div>
+                        <div class="serviceDetails mx-4 mt-2">
+                            <span class="mx-1">';
+                            echo $serv['service_name'];
+                            echo '</span><br>
+                            <span class="mx-1 smallText">';
+                                echo $serviceCategories[$serv['category_id']-1]['name'];
+                            echo '</span>';
+                            if ($serv['city_id'] == $userModel -> city_id){
+                                
+                                echo '<span class="badge badge-success mx-1 smallText">';
+                            } else {
+                                
+                                echo '<span class="badge badge-danger mx-1 smallText">';
+                            }
+                                echo $cities[$serv['city_id']-1]['name'];
+                                echo '<a href="https://google.com" class="stretched-link" target="__blank"></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>';
+            }
+            
+            ?>
+        </div>
     </div>
 </div>
