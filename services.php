@@ -30,6 +30,23 @@
     $cities = $cityModel->read();
 
 
+    $serviceModel = new ServiceModel($pdo);
+    $services = $serviceModel->read();
+    // var_dump($services);
+
+    // service Category 
+    $serviceCategoryModel = new CategoryModel($pdo);
+    $serviceCategories = $serviceCategoryModel->read();
+
+    // read all cities 
+    $cityModel = new CityModel($pdo);
+    $cities = $cityModel->read();
+
+
+    // current user object 
+    $userModel = new UserModel($pdo);
+    $userModel -> id = $_SESSION['user_id'];
+    $userModel->readOne();
     require_once __DIR__ . '/Views/Navbar/navbar.php';
 
     require_once __DIR__ . '/Views/Service/ServiceView.php';
