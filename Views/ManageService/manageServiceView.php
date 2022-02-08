@@ -31,9 +31,19 @@ require_once __DIR__ . "/../../Utilities/preventDirectAccess.php";
                 ' . $categories[$value['category_id'] - 1]['name'] . '
             </div>
             <div class="card-body">
-                <h5 class="card-title">' . $value['service_name'] . '</h5>
-                <p class="card-text">' . $value['description'] . '</p>
-                <a href="#" class="btn btn-info" data-toggle="collapse" data-target="#detailCollapse' . $value['id'] . '">More</a>
+                <div class="d-flex justify-content-left align-items-center">
+                    <div class="serviceImageContainer p-3">
+                        <img src="Controllers/getServiceImage.php?id='.$value['id'].'" alt="" class="serviceImage" onerror="this.src=\'Views/images/noService.jpg\'">
+                    </div>
+                    <div>
+                        <h5 class="card-title">' . $value['service_name'] . '</h5>
+                        <p class="card-text">' . $value['description'] . '</p>
+                        <a href="#" class="btn btn-info" data-toggle="collapse" data-target="#detailCollapse' . $value['id'] . '">More</a>
+                    </div>
+                </div>
+                
+
+
                 <div class="my-2 pt-1 collapse" id="detailCollapse' . $value['id'] . '" data-parent="#serviceContainer">
                     <hr>
                     <p>
@@ -88,6 +98,11 @@ require_once __DIR__ . "/../../Utilities/preventDirectAccess.php";
                         <button class="btn btn-primary mt-n1" name="submit" value="add provider">Add Provider</button>
                     </form>
                     <hr>
+                    <form id="imageUploadForm'.$value['id'].'" class="d-inline-block" method="post" enctype="multipart/form-data">
+                        <input type="hidden" value="'.$value['id'].'" name="id">
+                        <label for="input_file_upload_'.$value['id'].'">Upload Profile Image</label>
+                        <input type="file" class="form-control-file" id="input_file_upload_'.$value['id'].'" name="imageFile">
+                    </form>
                     <button class="btn btn-secondary m-1" data-toggle="modal" data-target="#editModal' . $value['id'] . '">Edit</button>
                     <form action="Controllers/deleteService.php" method="POST" onsubmit="return confirm(\'Do you really want to remove this service?\');" class="d-inline-block">
                         <input type="hidden" name="service_id" value="' . $value['id'] . '">
@@ -156,7 +171,7 @@ require_once __DIR__ . "/../../Utilities/preventDirectAccess.php";
             echo '</select>
                             </div>
                             <div class="form-group">
-                                <label for="input_category' . $value['id'] . '">City: </label>
+                                <label for="input_category' . $value['id'] . '">Category: </label>
                                 <select name="category_id" id="input_category' . $value['id'] . '" class="form-control">';
             foreach ($categories as $category) {
                 if ($value['category_id'] == $category['id']) {
@@ -245,7 +260,7 @@ require_once __DIR__ . "/../../Utilities/preventDirectAccess.php";
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="input_category">City: </label>
+                            <label for="input_category">Category: </label>
                             <select name="category_id" id="input_category" class="form-control">
                                 <?php
                                 foreach ($categories as $category) {
@@ -276,3 +291,26 @@ require_once __DIR__ . "/../../Utilities/preventDirectAccess.php";
 
 
 </div>
+
+<script>
+    $(document).ready(function(){
+        $("input:file").change(function(){
+            formData = new FormData(this.form);
+            for (var [key, value] of formData.entries()) { 
+                console.log(key, value);
+            }
+            $.ajax({
+                url: "Controllers/uploadServiceImage.php",
+                type: "POST",
+                data: new FormData(this.form),
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function(data){
+                    location.reload();
+                }
+            });
+
+        });
+    });
+</script>

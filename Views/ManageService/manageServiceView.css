@@ -22,3 +22,10 @@ th {
     background-color: #f74c55;
     color: white;
 }
+
+.serviceImage {
+    width: 200px;
+    height: 200px;
+    border-radius: 20%;
+    border: 1px solid black;
+}

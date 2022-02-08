@@ -46,6 +46,7 @@ CREATE TABLE `Service` (
   `organization_id` INT NOT NULL,
   `category_id` INT NOT NULL,
   `visibility` INT DEFAULT 1,
+  `image` LONGBLOB
 );
 
 CREATE TABLE `PriceType` (
