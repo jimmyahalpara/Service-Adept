@@ -12,7 +12,7 @@ body {
 }
 
 .serviceItem {
-    height: 50vh;
+    height: 52vh;
     background-color: #faf3f39c;
     border-radius: 10px;
     transition: all 0.3s ease-out;
@@ -29,4 +29,8 @@ body {
 
 .smallText {
     font-size: 0.75em;
+}
+
+.price {
+    color: grey;
 }

@@ -32,6 +32,7 @@
 
     $serviceModel = new ServiceModel($pdo);
     $services = $serviceModel->read();
+    // we'll update this later incase filter is applied to the services
     // var_dump($services);
 
     // service Category 
@@ -47,6 +48,12 @@
     $userModel = new UserModel($pdo);
     $userModel -> id = $_SESSION['user_id'];
     $userModel->readOne();
+
+
+    // read all price types
+    $priceTypeModel = new PriceTypeModel($pdo);
+    $priceTypes = $priceTypeModel->getAllPriceTypes();
+    
     require_once __DIR__ . '/Views/Navbar/navbar.php';
 
     require_once __DIR__ . '/Views/Service/ServiceView.php';
