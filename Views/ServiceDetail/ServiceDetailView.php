@@ -232,7 +232,7 @@
                                 echo '<span class="badge badge-danger smallText">';
                             }
                                 echo $cities[$serv['city_id']-1]['name'];
-                                echo '<a href="serviceDetail.php?id='.$serv['id'].'" class="stretched-link" target="__blank"></a>
+                                echo '<a href="https://google.com" class="stretched-link" target="__blank"></a>
                             </span>';
                             echo '</span><br>
                         </div>

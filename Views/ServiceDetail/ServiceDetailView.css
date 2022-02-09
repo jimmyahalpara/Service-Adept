@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+* {
+    /* outline: 1px  solid grey; */
+}
+
+.serviceContainer {
+    width: 98vw;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+.serviceItem {
+    height: 52vh;
+    background-color: #faf3f39c;
+    border-radius: 10px;
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+}
+
+.serviceItem:hover {
+    box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+.serviceImageContainer img {
+    border-radius: 5px;
+}
+
+.smallText {
+    font-size: 0.75em;
+}
+
+.price {
+    color: grey;
+}
