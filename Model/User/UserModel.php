@@ -264,6 +264,14 @@
             return hash($hash, $salt . $password);
         }
 
+        public function isLoginRequired(){
+            $query = "SELECT relogin FROM ".$this -> table_name." WHERE id = ?";
+            $stmt = $this -> conn -> prepare($query);
+            $stmt -> bindParam(1, $this -> id);
+            $stmt -> execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return (!$result || $result[0]['relogin'] == 1) ? true: false;
+        }
 
         // function to set relogin required
         public function setReloginRequired(){
