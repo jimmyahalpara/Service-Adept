@@ -1,8 +1,17 @@
 <?php
     function loginRequired(){
+        global $pdo;
         if (!isset($_SESSION['user_id']) || !isset($_SESSION['username']) || !isset($_SESSION['email']) || !isset($_SESSION['name']) || !isset($_SESSION['access_level'])){
             header('Location: /service_adept/login.php');
             exit();
+        } else {
+            $user = new UserModel($pdo);
+            $user -> id = $_SESSION['user_id'];
+            $con = $user -> isLoginRequired();
+            if ($con){
+                $user -> setReloginNotRequired();
+                header("Location: /service_adept/logout.php");
+            }
         }
     }
 

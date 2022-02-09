@@ -44,7 +44,7 @@
                     $_SESSION['email'] = $user -> email;
                     $_SESSION['name'] = $user -> name;
                     $_SESSION['access_level'] = $user -> access_level;
-
+                    $_SESSION['city_id'] = $user -> city_id;
                     
                     header("Location: " . dirname($_SERVER['PHP_SELF']));
                     return;

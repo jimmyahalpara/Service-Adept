@@ -3,10 +3,10 @@
     session_start();
     // import all models
     require_once __DIR__ . "/Utilities/importAllModels.php";
-    // login required
-    loginAccessRequired(3);
     // require database connection
     require_once __DIR__ . "/database/configuration.php";
+    // login required
+    loginAccessRequired(3);
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -3,12 +3,12 @@
 session_start();
 define('LOADER', true);
 
-// include all models
 require_once __DIR__ . '/Utilities/importAllModels.php';
-loginRequired();
 
 // include $pdo from database config 
 require_once __DIR__ . '/database/configuration.php';
+// include all models
+loginRequired();
 
 function createOrganizationError($message)
 {
