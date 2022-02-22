@@ -2,6 +2,7 @@
     padding: 0px;
     margin: 0px;
     user-select: none;
+    /* outline: 1px solid rgba(0, 0, 0, 0.604); */
 }  
 body{
     display: flex;
@@ -57,6 +58,16 @@ input.email,.password{
     font-weight: bold;
     color: #613B58;
     margin: 20px 0 0 40px
+}
+
+input.email.error, input.password.error {
+    border-color: red;
+}
+
+#email-error, #password-error {
+    color: red;
+    padding-left: 10px;
+    margin: 5px 0 0 40px
 }
 
 input::placeholder{

@@ -1,57 +1,63 @@
 <?php 
     // prevent direct access
     require_once __DIR__ . '/../../Utilities/preventDirectAccess.php';
-    require_once __DIR__. "/../Header/header.php"
+    // require_once __DIR__. "/../Header/header.php"
 
 ?>
-<style>
-    <?php require_once __DIR__. "./login.css" ?>
-</style>
 
-<body>
 
     <div class="mainContainer">
 
         <div class="text">
             <h1 class="bigText"> Log-in </h1>
-            <p class="smallText">Get access to resources that will help you to get your services.</p>
-            <p style="color:red;">
-                <?php
-                    if (isset($_SESSION['loginError'])){
-                        echo $_SESSION['loginError'];
-                        unset($_SESSION['loginError']);
-                    }
-                ?>
-            </p>
+            <p class="smallText">Get access to resources that <br>will help you to get <br>your services.</p>
         </div>
 
-        <form method="POST" autocomplete="on">
+        <form action="login.php" id="loginForm" method="POST">
             <div class="inputs">
-                <input name="email" id="email" class="email" type="email" placeholder="E-mail" required>
-                <br>
-                <input name="password" id="password" class="password" type="password" placeholder="Password" required>
-            </div>
+                <?php 
+                    if (isset($_SESSION["loginError"])){
+                        echo "<span>".$_SESSION['loginError']."<span>";
+                    }
 
-            <button name="submit" type="submit" onclick="return dovalidate()" class="login">Log-in</button>
-        </form>
-            <div class="hr">
+                ?>
+                <input class="email d-block" type="email" placeholder="E-mail" name="email">
+                <br>
+                <input class="password d-block" type="password" placeholder="Password" name="password">
+            </div>
+            
+            <button type="submit" name="submit" value="submit" class="login">Log-in</button>
+            <div  class="hr">
                 <hr>
             </div>
+        </form>
 
             <div class="socialIcons">
-                <button class="socialLogos"><i class="fa fa-facebook-f"></i></button>
-                <button class="socialLogos"><i class="fa fa-google"></i></button>
+                <button type="button" class="socialLogos"><i class="fa fa-facebook-f"></i></button>
+                <button type="button" class="socialLogos"><i class="fa fa-google"></i></button>
             </div>
-            <p class="bottomText">Don't have an account? <button id="loginSignUpButton" onclick="window.location='createUser.php'; return false;">SignUp</button></p>
-            
+            <p class="bottomText">Don't have an account?</p>
+            <p class="signup"><a href="Signup.html" target="_blank">Sign up</a></p>
 
 
 
     </div>
     <div class="square">
 
-        <img src="Views/images/Saly-12.svg" class="mobileImg">
+        <img src="./Pages/images/Log-in-3D-Doodle.svg" class="mobileImg">
     </div>
+    <script>
+        $("#loginForm").validate({
+            rules: {
+                email: "required",
+                password: "required"
+            },
+            messages: {
+                email: "You need to enter valid email",
+                password: "Please Enter password"
+            }
+        });
+    </script>
 
 
-</body>
+

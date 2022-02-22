@@ -79,12 +79,26 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+<meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- Google fonts -->
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;448;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet"> -->
+    <!-- Font Awesome icons -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../Pages/css/Login-style.css">
+    <title>Log-in</title> -->
+
+    <?php require_once "Views/Header/header.php" ?>
+    <link rel="stylesheet" href="./Pages/css/Login-style.css">
+    <title>Log-in</title>
+</head>
 </body>
     <?php
         require_once __DIR__ . '/Views/Login/login.php';
     ?>
+
+    
 </html>
