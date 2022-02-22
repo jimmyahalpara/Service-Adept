@@ -1,0 +1,110 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    user-select: none;
+}  
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Lexend Deca', sans-serif;
+    background-image: url("../images/blur.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.mainContainer{
+  width: 1050px;
+  height: 550px;  
+  display: flex;
+  justify-content: flex-start;
+  align-items: left;
+  flex-direction: column;
+  position: absolute; 
+  background-color: #faf3f39c;
+  backdrop-filter: blur(5px);
+  border-radius: 25px;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.text{
+    margin: 45px 0 0 40px;
+}
+.bigText{
+    font-size: 40px;
+    line-height: 50px;
+}
+
+.smallText{
+    font-size: 20px;
+    font-weight: lighter;
+    margin: 5px 0 0 3px;
+}
+
+
+.inputs{
+    padding: 10px 0 10px 0;
+}
+
+.info{
+    margin-top: 15px;
+}
+
+input.email,.work,.Name,.Number{
+    border: 3px solid white;
+    border-radius: 10px;
+    background: transparent;
+    width: 300px;
+    height: 35px;
+    padding-left: 10px;
+    font-weight: bold;
+    color: #613B58;
+    margin: 25px 0 0 40px;
+}
+
+input::placeholder{
+    font-weight: bold;
+    color: #613B58;
+}
+input:focus{
+    outline-style: none;
+}
+
+button.submit{
+    background-color: #f74c55;
+    border-style: none;
+    border-radius: 7px;
+    color: white;
+    padding: 10px 130px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 15px 0 0 40px;
+    cursor: pointer;
+}
+
+
+.square {
+    position: absolute;
+    height: 550px;  
+    width: 500px;
+    background: transparent;
+    margin: 100px 0 100px 500px;
+    border-radius: 25px;
+    z-index: 1;
+}
+
+.note{
+    position: relative;
+    height: 450px;
+    width: 500px;
+    margin: 50px 0 0 10px;
+  }
+ 
+
+ 
+

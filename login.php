@@ -10,6 +10,13 @@
     require_once __DIR__ . "/database/configuration.php";
 
 
+    unset($_SESSION['user_id']);
+    unset($_SESSION['username']);
+    unset($_SESSION['email']);
+    unset($_SESSION['name']);
+    unset($_SESSION['access_level']);
+    unset($_SESSION['city_id']);
+
     function setLoginError($message)
     {
         $_SESSION['loginError'] = $message;

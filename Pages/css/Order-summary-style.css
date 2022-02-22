@@ -1,0 +1,333 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    user-select: none;
+} 
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Lexend Deca', sans-serif;
+    background-image: url('../images/order-summary-background.svg');   
+    background-repeat: no-repeat;
+    background-position: middle;
+}
+
+.navbar{
+    position: absolute;
+    width: 95%;
+    height: 100px;
+    top: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.62);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 36px -15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Ellipse{
+    position: absolute;
+    width: 65%;
+    position: fixed;
+    height: 1341px;
+    left: 1197px;
+    top: -571px;
+    border-radius: 50%;
+    background: radial-gradient(61.42% 61.42% at 63.34% 37.97%, #FF4343 0%, #FFBB00 100%);
+}
+
+.logo{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nav-links{
+    position: relative;
+    margin-left: 30%;
+
+}
+
+.link{
+    margin: 0 20px 0 20px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.heading{
+    position: absolute;
+    font-size: 30px;
+    font-weight: bold;
+    top: 25%;
+    text-align: center;
+}
+
+.service-info{
+    position: absolute;
+    padding: 20px;
+    width: 90%;
+    border-radius: 20px;
+    background: rgba(244, 243, 243, 0.5);
+    border: 4px solid #F1F1F1;
+    backdrop-filter: blur(10px);    
+    top: 40%;
+}
+
+.text1{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.dash{
+    cursor: pointer;
+    margin-left: 85%;
+    font-weight: bold;
+}
+
+.service-provider-info{
+    position: absolute;
+    padding: 20px;
+    width: 90%;
+    border-radius: 20px;
+    background: rgba(244, 243, 243, 0.5);
+    border: 4px solid #F1F1F1;
+    backdrop-filter: blur(10px);
+    top: 55%;    
+}
+
+.text2{
+    font-weight: bold;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.coupon{
+    position: absolute;
+    padding: 20px;
+    width: 40%;
+    height: 15%;
+    border-radius: 20px;
+    background: rgba(244, 243, 243, 0.5);
+    border: 4px solid #F1F1F1;
+    backdrop-filter: blur(10px);
+    top: 100%;
+    margin: 0 50% 0 0;
+    
+}
+
+.coupon-input{
+    position: relative;
+    padding: 10px;
+    margin-top: 5%;
+    height: 50px;
+    width: 65%;
+    background: #FFFFFF;
+    border: 3px solid #000000;
+    box-sizing: border-box;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    
+}
+
+.cart-total{
+    position: absolute;
+    padding: 20px;
+    width: 40%;
+    height: 15%;
+    border-radius: 20px;
+    background: rgba(244, 243, 243, 0.5);
+    border: 4px solid #F1F1F1;
+    backdrop-filter: blur(10px);
+    top: 100%;
+    margin: 0 0 0 50%;
+}
+
+.price-box{
+    position: relative;
+    padding: 10px;
+    margin: 5% 0 0 35%;
+    height: 50px;
+    width: 65%;
+    background: #FFFFFF;
+    border: 3px solid #000000;
+    box-sizing: border-box;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.proceed-btn{
+    cursor: pointer;
+    position: absolute;
+    width: 200px;
+    margin: 80% 0 0 80%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    border: 3px solid #000000;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.proceed-btn:hover{
+    box-shadow: 3px 3px 10px rgb(0, 0, 0,0.6);
+    transition-duration: 0.3s;
+}
+
+
+/* Footer */
+
+
+.fot_background{
+    position: absolute;
+    top: 1350px;
+}
+
+.footer{
+    position: absolute;
+    width: 80%;
+    height: 400px;
+    background-color: #000000;
+    border-radius: 20px;
+    top: 1500px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.62);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 36px -15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.fot-links{
+    position: absolute;
+    margin: 20px;
+}
+
+.input-btn{
+    position: relative;
+    display: inline-flex;
+}
+
+input.email{
+    width: 285px;
+    height: 40px;
+    background: #ffffff;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: #000000;
+    padding: 10px;
+    font-weight: bold;
+    margin: 0 20px;
+}
+
+.subscribe{
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    background: #000000;
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: #ffffff;
+    padding: 10px;
+    font-weight: bold;
+}
+
+hr.line1{
+    position: absolute;
+    margin: 75px 3%;
+    width: 93%;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.service-list{
+    display: grid;
+}
+.heading1{
+    position: absolute;
+    top: 25%;
+    margin-left: 3%;
+    font-weight: bold;
+}
+
+.cityname1{
+    font-size: large;
+    display: grid;
+    grid-template-columns: 15% 15% 15% 15%;
+    grid-gap: 10px;
+    margin: 12% 3%;
+}
+hr.line2{
+    position: absolute;
+    margin-left: 3%;
+    top: 60%;
+    width: 60%;
+    border: 1px solid rgb(0, 0, 0,0.6);
+    border-radius: 20px;
+}
+.heading2{
+    position: absolute;
+    top: 65%;
+    margin-left: 3%;
+    font-weight: bold;
+}
+
+.cityname2{
+    font-size: large;
+    display: grid;
+    grid-template-columns: 15% 15% 15% 15%;
+    grid-gap: 10px;
+    margin: -5% 3%;
+}
+
+.social-icon{
+    position: absolute;
+    display: inline-flex;
+    margin-left: 70%;
+    bottom: 55%;
+}
+
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius:50%;
+    background:rgba(0, 0, 0, 0.7);
+    margin: 0 10px;
+}
+  
+.fa-instagram, .fa-twitter, .fa-facebook, .fa-linkedin {
+    color: white;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.app-icon{
+    position: absolute;
+    display: inline-flex;
+    flex-direction: column;
+    margin-left: 72%;
+    bottom: 2.5%;
+}
+
+.app-btn{
+    margin: 5px;
+}
+
+.app-btn:hover {
+    opacity: 0.9;
+}
