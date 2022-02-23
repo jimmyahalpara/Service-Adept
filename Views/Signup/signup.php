@@ -68,7 +68,7 @@
     </div>
     <div class="square">
 
-        <img src="Views/images//Saly-1.svg" class="Rocket">
+        <img src="Views/images/Saly-1.svg" class="Rocket">
     </div>
     <script>
     let password_1 = document.getElementById("input_password_1");

@@ -12,6 +12,7 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     height: 1100px;
+    background-image: url("Pages/images/blur.jpg");
 }
 
 .mainContainer{
