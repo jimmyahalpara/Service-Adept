@@ -7,21 +7,36 @@
 
 
 nav {
-    background-color: #f74c55;
+    background-color: rgba(255, 255, 255, 0.302);
     font-family: 'Lexend Deca', sans-serif; 
+    color: black !important;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.535);
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
 }
 
+nav a {
+    color: black !important;
+}
 
-.loginsignup {
-    border: 2px solid white;
+.nav-link {
+    /* border: 2px solid white; */
     border-radius: 5px;
     transition: all 0.3s ease-in-out;
+    color: black !important;
 }
 
-.loginsignup:hover {
+.nav-link:hover {
     background-color: white;
-    color: #f74c55 !important;
+    color: black !important;
 }
+
+
+/* body {
+    background-image: url('Pages/images/Home-background.svg');   
+    background-repeat: no-repeat;
+    background-position: top right;
+} */
 
 
 
