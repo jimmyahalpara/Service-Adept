@@ -34,3 +34,9 @@ body {
 .price {
     color: grey;
 }
+
+body {
+    background-image: url('Pages/images/Home-background.svg');   
+    background-repeat: no-repeat;
+    background-position: top right;
+}
